@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <div>Menu</div>
+        <div>Menu </div>
         <div>Search Bar</div>
         <div>Create </div>
       </div>
