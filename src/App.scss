@@ -1,0 +1,30 @@
+@import 'bootstrap/scss/bootstrap';
+
+#root {
+  margin: 0 auto;
+}
+
+.home{
+  background-color: lightblue;
+  height: 90vh;
+}
+
+.navbar{
+  height: 10vh;
+  background-color: #C8CCFF;
+  
+
+  .navbar-left{
+    display: flex;
+    width: 700px;
+    justify-content: space-between;
+    padding-left: 30px;
+  }
+
+  .navbar-right{
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    padding-right: 30px;
+  }
+}
