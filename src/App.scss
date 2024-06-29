@@ -1,30 +1,20 @@
 @import 'bootstrap/scss/bootstrap';
+@import './stylesheets/Navbar.scss';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import './stylesheets/Components.scss';
+@import '@trimbleinc/modus-react-bootstrap/css/dist/modus-react-bootstrap.min.css';
 
 #root {
   margin: 0 auto;
 }
 
 .home{
-  background-color: lightblue;
-  height: 90vh;
+  background-color: white;
+  height: 88vh;
 }
 
-.navbar{
-  height: 10vh;
-  background-color: #C8CCFF;
-  
-
-  .navbar-left{
-    display: flex;
-    width: 700px;
-    justify-content: space-between;
-    padding-left: 30px;
-  }
-
-  .navbar-right{
-    display: flex;
-    width: 200px;
-    justify-content: space-between;
-    padding-right: 30px;
-  }
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
