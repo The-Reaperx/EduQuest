@@ -3,8 +3,13 @@ import SearchIcon from "../assets/SearchIcon";
 import CreateIcon from "../assets/CreateIcon";
 import FireIcon from "../assets/FireIcon";
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { Button } from "primereact/button";
 import { Avatar } from "primereact/avatar";
+import profileImage from "../assets/images/ProfilePic.png";
+import TemplateDemo from "./TemplateDemo";
+
+import SideBarDemo from "./SideBarDemo";
 
 function NavBar() {
   const [show, setShow] = useState(false);
@@ -15,7 +20,7 @@ function NavBar() {
     <>
       <div className="navbar">
         <div className="navbar-left">
-          <List className="navbar-menu" color="white" size={45} />
+          <SideBarDemo />
           <div className="search-bar">
             <form className="search-form">
               <div className="search-icon">
@@ -43,7 +48,9 @@ function NavBar() {
             </div>
             <div className="streak-number">5</div>
           </div>
-          <div></div>
+          <div>
+            <Avatar image={profileImage} size="xlarge" shape="circle" />
+          </div>
         </div>
       </div>
 
@@ -53,14 +60,12 @@ function NavBar() {
         <Modal.Header closeButton>
           <Modal.Title>Create your Course</Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
+        <Modal.Body>
+          <TemplateDemo />
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Button label="Close" severity="secondary" onClick={handleClose} />
+          <Button label="Upload PDF" severity="help" onClick={handleClose} />
         </Modal.Footer>
       </Modal>
     </>

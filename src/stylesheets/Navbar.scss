@@ -109,6 +109,7 @@ $text-color-tertiary: #656EB4;
       display: flex;
       width: 300px;
       justify-content: space-around;
+      align-items: center;
       padding-right: 30px;
 
     //Streak Button Styling
@@ -151,6 +152,8 @@ $text-color-tertiary: #656EB4;
 
 
 
-
+.modal-button{
+    color:#441feb;
+}
 
 
