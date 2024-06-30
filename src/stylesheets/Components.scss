@@ -1,1 +1,63 @@
-.cls-1{fill:#fff;}
+//BannerText
+
+.banner-text{
+    position:absolute;
+    left:35px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .banner-top{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-family:"Press Start 2P" ;
+
+
+        .banner-circle{
+            position:absolute;
+            top:40px;
+            
+        }
+
+
+        .banner-number{
+            padding-top: 4rem;
+            font-size: 3rem;
+        }
+        
+        .banner-code{
+            padding-top: 40px;
+            padding-bottom: 50px;
+            font-family:"Press Start 2P" ;
+            font-size:15px;
+            
+            
+        }
+
+        .banner-course{
+            display:flex;   
+            padding-bottom: 170px;
+            font-family:"Press Start 2P" ;
+            font-size:13px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            width:50px;
+        }
+    }
+
+    .banner-rate{
+        font-family:"Press Start 2P" ;
+        font-size:18px;
+    }
+
+        
+}
+
+
+.banner-graphics{
+    position:relative;
+    width:186px;
+    height:506px;
+}

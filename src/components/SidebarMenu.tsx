@@ -1,24 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
-import { Button } from "primereact/button";
 import { List } from "react-bootstrap-icons";
+import { Divider } from "primereact/divider";
 
-const SidebarDemo = () => {
+const SidebarMenu = () => {
   const [visibleLeft, setVisibleLeft] = useState(false);
-
-  const customIcons = (
-    <React.Fragment>
-      <button className="p-sidebar-icon p-link mr-1">
-        <span className="pi pi-arrow-right" />
-      </button>
-    </React.Fragment>
-  );
 
   return (
     <div>
       <Sidebar visible={visibleLeft} onHide={() => setVisibleLeft(false)}>
         <h4>Home</h4>
+        <Divider />
         <h4>Create</h4>
+        <Divider />
         <h4>Profile</h4>
       </Sidebar>
 
@@ -32,4 +26,4 @@ const SidebarDemo = () => {
   );
 };
 
-export default SidebarDemo;
+export default SidebarMenu;

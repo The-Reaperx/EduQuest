@@ -1,18 +1,23 @@
 @import 'bootstrap/scss/bootstrap';
 @import './stylesheets/Navbar.scss';
+@import './stylesheets/Home.scss';
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import './stylesheets/Components.scss';
 @import '@trimbleinc/modus-react-bootstrap/css/dist/modus-react-bootstrap.min.css';
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "primereact/resources/themes/lara-light-cyan/theme.css";
 
+
+
+
+
+$text-color-primary:#32316D;
+$text-color-tertiary: #656EB4;
+
+
+
 #root {
   margin: 0 auto;
-}
-
-.home{
-  background-color: white;
-  height: 88vh;
 }
 
 .press-start-2p-regular {

@@ -1,4 +1,3 @@
-import { List } from "react-bootstrap-icons";
 import SearchIcon from "../assets/SearchIcon";
 import CreateIcon from "../assets/CreateIcon";
 import FireIcon from "../assets/FireIcon";
@@ -7,9 +6,9 @@ import { Modal } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { Avatar } from "primereact/avatar";
 import profileImage from "../assets/images/ProfilePic.png";
-import TemplateDemo from "./TemplateDemo";
+import TemplateDemo from "./FileDrop";
 
-import SideBarDemo from "./SideBarDemo";
+import SideBarDemo from "./SidebarMenu";
 
 function NavBar() {
   const [show, setShow] = useState(false);

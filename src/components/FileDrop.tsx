@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import {
   FileUpload,
@@ -8,11 +8,10 @@ import {
   ItemTemplateOptions,
 } from "primereact/fileupload";
 import { ProgressBar } from "primereact/progressbar";
-import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
 import { Tag } from "primereact/tag";
 
-export default function TemplateDemo() {
+export default function FileDrop() {
   const toast = useRef<Toast>(null);
   const [totalSize, setTotalSize] = useState(0);
   const fileUploadRef = useRef<FileUpload>(null);
