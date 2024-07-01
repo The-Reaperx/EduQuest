@@ -1,6 +1,10 @@
-import BannerCircle from "../assets/BannerCircle";
 import Banner from "../components/Banner";
-import BannerText from "../components/BannerText";
+import Theme1 from "../assets/images/Theme1.png";
+import Theme2 from "../assets/images/Theme2.png";
+import Theme3 from "../assets/images/Theme3.png";
+import Theme4 from "../assets/images/Theme4.png";
+import UploadBackDrop from "../assets/images/UploadBackDrop.png";
+import UploadBanner from "../components/UploadBanner";
 
 function Home() {
   return (
@@ -17,6 +21,7 @@ function Home() {
             rate="87%"
             number={1}
             color="#AAAFE8"
+            background={Theme1}
           />
           <Banner
             code="CPCS 203"
@@ -24,13 +29,28 @@ function Home() {
             rate="57%"
             number={2}
             color="#946a36"
+            background={Theme2}
           />
           <Banner
-            code="CPCS 203"
-            course="COMPUTER SCIENCE"
-            rate="57%"
-            number={2}
-            color="#946a36"
+            code="MATH 202"
+            course="CALCULUS II"
+            rate="26%"
+            number={3}
+            color="#51776A"
+            background={Theme3}
+          />
+          <Banner
+            code="MATH 202"
+            course="CALCULUS II"
+            rate="26%"
+            number={4}
+            color="#090A58"
+            background={Theme4}
+          />
+          <UploadBanner
+            color="#AAAFE8"
+            number={0}
+            background={UploadBackDrop}
           />
         </div>
       </div>

@@ -1,15 +1,12 @@
-import BannerText from "./BannerText";
 import BackDrop from "../assets/BackDrop";
+import CloudIcon from "../assets/CloudIcon";
 interface Props {
   color: string;
-  code: string;
-  course: string;
-  rate: string;
   number: number;
   background: string;
 }
 
-function Banner({ color, code, course, rate, number, background }: Props) {
+function UploadBanner({ color, number, background }: Props) {
   return (
     <div className="banner-container">
       <div className="banner-graphics">
@@ -50,10 +47,13 @@ function Banner({ color, code, course, rate, number, background }: Props) {
         <div className="background-image">
           <BackDrop background={background} />
         </div>
-        <BannerText code={code} course={course} rate={rate} number={number} />
+        <div className="banner-cloud">
+          <CloudIcon />
+          <div className="banner-cloud-text">Upload Textbook</div>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Banner;
+export default UploadBanner;
