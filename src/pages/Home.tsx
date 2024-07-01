@@ -6,7 +6,11 @@ import Theme4 from "../assets/images/Theme4.png";
 import UploadBackDrop from "../assets/images/UploadBackDrop.png";
 import UploadBanner from "../components/UploadBanner";
 
-function Home() {
+interface HomeProps {
+  onOpenModal: () => void;
+}
+
+function Home({ onOpenModal }: HomeProps) {
   return (
     <div className="home">
       <div className="hero">
@@ -51,6 +55,7 @@ function Home() {
             color="#AAAFE8"
             number={0}
             background={UploadBackDrop}
+            onOpenModal={onOpenModal}
           />
         </div>
       </div>

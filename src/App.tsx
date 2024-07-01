@@ -5,12 +5,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primeicons/primeicons.css";
 import Modall from "./components/Modall";
+import { useState } from "react";
+
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      <Modall />
-      <NavBar />
-      <Home />
+      <Modall isOpen={isModalOpen} onCloseModal={handleCloseModal} />
+      <NavBar onOpenModal={handleOpenModal} />
+      <Home onOpenModal={handleOpenModal} />
     </>
   );
 }

@@ -4,12 +4,13 @@ interface Props {
   color: string;
   number: number;
   background: string;
-  onClick: () => void;
+  onClick?: () => void;
+  onOpenModal: () => void;
 }
 
-function UploadBanner({ color, number, background }: Props) {
+function UploadBanner({ color, number, background, onOpenModal }: Props) {
   return (
-    <div className="banner-container" onClick={() => alert("hello")}>
+    <div className="banner-container" onClick={onOpenModal}>
       <div className="banner-graphics">
         <svg
           style={{ width: "180px", position: "absolute", zIndex: 1 }}

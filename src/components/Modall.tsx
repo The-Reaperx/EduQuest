@@ -3,13 +3,14 @@ import TemplateDemo from "./FileDrop";
 import { Button } from "primereact/button";
 import { useState } from "react";
 
-function Modall() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+interface ModalProps {
+  isOpen: boolean;
+  onCloseModal: () => void;
+}
 
+function Modall({ isOpen, onCloseModal }: ModalProps) {
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={isOpen} onHide={onCloseModal}>
       <Modal.Header closeButton>
         <Modal.Title>Create your Course</Modal.Title>
       </Modal.Header>
@@ -17,8 +18,8 @@ function Modall() {
         <TemplateDemo />
       </Modal.Body>
       <Modal.Footer>
-        <Button label="Close" severity="secondary" onClick={handleClose} />
-        <Button label="Upload PDF" severity="help" onClick={handleClose} />
+        <Button label="Close" severity="secondary" onClick={onCloseModal} />
+        <Button label="Upload PDF" severity="help" onClick={onCloseModal} />
       </Modal.Footer>
     </Modal>
   );

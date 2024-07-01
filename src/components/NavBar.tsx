@@ -1,20 +1,16 @@
 import SearchIcon from "../assets/SearchIcon";
 import CreateIcon from "../assets/CreateIcon";
 import FireIcon from "../assets/FireIcon";
-import { useState } from "react";
-import { Modal } from "react-bootstrap";
-import { Button } from "primereact/button";
 import { Avatar } from "primereact/avatar";
 import profileImage from "../assets/images/ProfilePic.png";
-import TemplateDemo from "./FileDrop";
 
 import SideBarDemo from "./SidebarMenu";
 
-function NavBar() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+interface NavbarProps {
+  onOpenModal: () => void;
+}
 
+function NavBar({ onOpenModal }: NavbarProps) {
   return (
     <>
       <div className="navbar">
@@ -33,7 +29,7 @@ function NavBar() {
               />
             </form>
           </div>
-          <button className="navbar-create" onClick={handleShow}>
+          <button className="navbar-create" onClick={onOpenModal}>
             <div className="create-icon">
               <CreateIcon />
             </div>
@@ -52,21 +48,6 @@ function NavBar() {
           </div>
         </div>
       </div>
-
-      {/* Modal Structure */}
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Create your Course</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <TemplateDemo />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button label="Close" severity="secondary" onClick={handleClose} />
-          <Button label="Upload PDF" severity="help" onClick={handleClose} />
-        </Modal.Footer>
-      </Modal>
     </>
   );
 }
