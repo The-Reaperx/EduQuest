@@ -4,11 +4,12 @@ interface Props {
   color: string;
   number: number;
   background: string;
+  onClick: () => void;
 }
 
 function UploadBanner({ color, number, background }: Props) {
   return (
-    <div className="banner-container">
+    <div className="banner-container" onClick={() => alert("hello")}>
       <div className="banner-graphics">
         <svg
           style={{ width: "180px", position: "absolute", zIndex: 1 }}
@@ -51,6 +52,7 @@ function UploadBanner({ color, number, background }: Props) {
           <CloudIcon />
           <div className="banner-cloud-text">Upload Textbook</div>
         </div>
+        <div className="click-area"></div>
       </div>
     </div>
   );

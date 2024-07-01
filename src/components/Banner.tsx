@@ -51,6 +51,7 @@ function Banner({ color, code, course, rate, number, background }: Props) {
           <BackDrop background={background} />
         </div>
         <BannerText code={code} course={course} rate={rate} number={number} />
+        <div className="click-area"></div>
       </div>
     </div>
   );
