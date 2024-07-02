@@ -1,7 +1,7 @@
 interface Props {
   padding?: number;
   level: number;
-  active: boolean;
+  active?: boolean;
 }
 
 function ActiveLevel({ active, padding, level }: Props) {

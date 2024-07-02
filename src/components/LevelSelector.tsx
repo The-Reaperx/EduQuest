@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-function LevelSelector() {
+interface Props {
+  levels: number;
+}
+
+function LevelSelector({ levels }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   const handleClick = (index: number) => {
@@ -10,13 +14,13 @@ function LevelSelector() {
   return (
     <div className="levels-container">
       <div className="levels-container-internal">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((number, index) => (
+        {Array.from({ length: levels }, (_, index) => (
           <div
             key={index}
             className={`numbers ${selectedIndex === index ? "selected" : ""}`}
             onClick={() => handleClick(index)}
           >
-            {number}
+            {index + 1}
           </div>
         ))}
       </div>
