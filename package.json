@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@trimbleinc/modus-react-bootstrap": "^1.2.4",
+    "@types/react-router-dom": "^5.3.3",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "primeicons": "^7.0.0",
@@ -19,6 +20,7 @@
     "react-bootstrap": "^2.10.3",
     "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.0",
     "react-transition-group": "^4.4.5",
     "sass": "^1.77.6"
   },

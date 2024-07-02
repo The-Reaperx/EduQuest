@@ -7,9 +7,7 @@ $background-primary:#C8CCFF;
 .levels{
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: white;
-    height: 86vh;
 
     .units-with-levels{
         width:80%;
@@ -28,8 +26,10 @@ $background-primary:#C8CCFF;
     }
     .level-selector{
         position: sticky;
+        top:0;
         width:2%;
         height:100%;
+        margin-top:40px;
     }
 
 
@@ -45,7 +45,7 @@ $background-primary:#C8CCFF;
     justify-content: center;
     align-items: center;
     width:90%;
-    height:30%;
+    height:200px;
     background-color: $background-secondary;
     border-radius: 30px;
 
@@ -85,7 +85,7 @@ $background-primary:#C8CCFF;
     justify-content: center;
     align-items: center;
     width:30px;
-    height:92%;
+    height:700px;
     background-color: $background-secondary;
     border-radius: 30px;
 

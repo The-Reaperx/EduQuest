@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { List } from "react-bootstrap-icons";
 import { Divider } from "primereact/divider";
+import { NavLink } from "react-router-dom";
 
 const SidebarMenu = () => {
   const [visibleLeft, setVisibleLeft] = useState(false);
@@ -9,7 +10,14 @@ const SidebarMenu = () => {
   return (
     <div>
       <Sidebar visible={visibleLeft} onHide={() => setVisibleLeft(false)}>
-        <h4>Home</h4>
+        <NavLink
+          to="/"
+          onClick={() => {
+            setVisibleLeft(false);
+          }}
+        >
+          <h4>Home</h4>
+        </NavLink>
         <Divider />
         <h4>Create</h4>
         <Divider />

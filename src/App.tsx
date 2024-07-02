@@ -7,6 +7,7 @@ import "primeicons/primeicons.css";
 import Modall from "./components/Modall";
 import { useState } from "react";
 import Levels from "./pages/Levels";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,12 +21,14 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <Modall isOpen={isModalOpen} onCloseModal={handleCloseModal} />
       <NavBar onOpenModal={handleOpenModal} />
-      <Home onOpenModal={handleOpenModal} />
-      <Levels />
-    </>
+      <Routes>
+        <Route path="/" element={<Home onOpenModal={handleOpenModal} />} />
+        <Route path="/levels" element={<Levels />} />
+      </Routes>
+    </Router>
   );
 }
 
