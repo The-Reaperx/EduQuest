@@ -26,7 +26,7 @@ function App() {
       <NavBar onOpenModal={handleOpenModal} />
       <Routes>
         <Route path="/" element={<Home onOpenModal={handleOpenModal} />} />
-        <Route path="/levels" element={<Levels />} />
+        <Route path="/course/:courseCode" element={<Levels />} />
       </Routes>
     </Router>
   );

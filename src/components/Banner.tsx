@@ -1,6 +1,6 @@
 import BannerText from "./BannerText";
 import BackDrop from "../assets/BackDrop";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Props {
   color: string;
@@ -13,7 +13,7 @@ interface Props {
 
 function Banner({ color, code, course, rate, number, background }: Props) {
   return (
-    <NavLink to="levels">
+    <Link to={`/course/${code}`}>
       <div className="banner-container">
         <div className="banner-graphics">
           <svg
@@ -57,7 +57,7 @@ function Banner({ color, code, course, rate, number, background }: Props) {
           <div className="click-area"></div>
         </div>
       </div>
-    </NavLink>
+    </Link>
   );
 }
 
