@@ -8,6 +8,8 @@ import Modall from "./components/Modall";
 import { useState } from "react";
 import Levels from "./pages/Levels";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import QuestionPage from "./pages/QuestionsPage";
+import QuestionsPage from "./pages/QuestionsPage";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +29,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home onOpenModal={handleOpenModal} />} />
         <Route path="/course/:courseCode" element={<Levels />} />
+        <Route
+          path="/:courseCode/unit/:unitId/level/:levelId/questions"
+          element={<QuestionsPage />}
+        />
       </Routes>
     </Router>
   );
