@@ -5,6 +5,7 @@ import Theme3 from "../assets/images/Theme3.png";
 import Theme4 from "../assets/images/Theme4.png";
 import UploadBackDrop from "../assets/images/UploadBackDrop.png";
 import UploadBanner from "../components/UploadBanner";
+import MCQQuestion from "../components/MCQQuestion";
 
 interface HomeProps {
   onOpenModal: () => void;
@@ -59,6 +60,7 @@ function Home({ onOpenModal }: HomeProps) {
           />
         </div>
       </div>
+      <MCQQuestion />
     </div>
   );
 }

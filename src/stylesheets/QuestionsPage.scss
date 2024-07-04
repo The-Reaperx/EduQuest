@@ -1,0 +1,56 @@
+$text-color-primary:#32316D;
+$text-color-tertiary: #656EB4;
+$background-secondary:#E0E2FF;
+$background-primary:#C8CCFF;
+
+.mcq-page{
+    padding-top:100px;
+    height:86vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    .mcq-question-container{
+        display: flex;
+        align-items: center;
+        padding-left:10%;
+        padding-bottom:110px;
+    }
+
+    .mcq-answers-container{
+        padding-bottom: 35px;
+        padding-left: 200px;
+        position: relative;
+
+        .mcq-answers{
+            z-index: 1;
+            position:relative;
+            width:700px;
+            font-size: 14px;
+            font-family: "Press Start 2P";
+            color:$text-color-primary;
+            text-align: left;
+
+            padding-top: 25px;
+            padding-left: 18px;
+
+        }
+    }
+
+    .mcq-question{
+        z-index: 1;
+        position:relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:900px;
+        font-size: 24px;
+        font-family: "Press Start 2P";
+        color:$text-color-primary;
+        text-align: center;
+        align-items: center;
+
+    }
+
+    
+}
