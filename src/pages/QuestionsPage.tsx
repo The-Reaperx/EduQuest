@@ -7,7 +7,7 @@ import disappointed from "../assets/mascot/dissappointed.png";
 import frown from "../assets/mascot/frown.png";
 import proud from "../assets/mascot/proud.png";
 import smile from "../assets/mascot/smile.png";
-import ChatBot from "react-chatbotify";
+import ConfettiExplosion from "react-confetti-explosion";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -34,6 +34,9 @@ function QuestionsPage() {
   const [mascotMessage, setMascotMessage] = useState("Hey there");
   const [showMascotPopup, setShowMascotPopup] = useState(false); // State to manage popup visibility
 
+  // State for Confetti Explosion
+  const [isExploding, setIsExploding] = useState(false);
+
   // Function to handle next question
   const nextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -46,6 +49,10 @@ function QuestionsPage() {
 
     if (selectedChoice === correctChoice) {
       setCorrectAnswers((prevCount) => prevCount + 1);
+      setIsExploding(true); // Trigger confetti explosion
+      setTimeout(() => {
+        setIsExploding(false); // Hide confetti after a short duration
+      }, 3000);
     } else {
       setWrongAnswers((prevCount) => prevCount + 1);
     }
@@ -121,6 +128,7 @@ function QuestionsPage() {
           </div>
         )}
       </div>
+      {isExploding && <ConfettiExplosion />}
       <div className="question-right-graphics">
         <div className="power-ups">
           <div className="power-ups-container">

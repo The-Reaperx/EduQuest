@@ -15,7 +15,6 @@ function Levels() {
   const course = courseData[courseCode];
 
   const handleLevelClick = (unitId: number, levelId: number) => {
-    // Navigate to the questions page for the selected level
     navigate(`/${courseCode}/unit/${unitId}/level/${levelId}/questions`);
   };
 
@@ -23,7 +22,7 @@ function Levels() {
     <div className="levels">
       <div className="units-with-levels">
         {course.units.map((unit) => (
-          <div key={unit.unitId}>
+          <div id={`${courseCode}-${unit.unitId}`} key={unit.unitId}>
             <Unit title={`Unit ${unit.unitId}`} text={unit.unitText} />
             <div className="mini-levels">
               {unit.levels.map((level, index) => (
@@ -42,7 +41,7 @@ function Levels() {
       </div>
 
       <div className="level-selector">
-        <LevelSelector levels={course.units.length} />
+        <LevelSelector levels={course.units.length} courseCode={courseCode!} />
       </div>
     </div>
   );
