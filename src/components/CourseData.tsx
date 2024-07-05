@@ -1,8 +1,12 @@
 export interface Question {
   questionId: number;
+  questionType: string;
   questionText: string;
-  answer: string;
-  hints?: string[];
+  choices: string[];
+  answer: number;
+  explanation: string;
+  hint: string;
+  mascot: string;
 }
 
 export interface Level {
@@ -36,21 +40,51 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
+                questionType: "Multiple Choice",
                 questionText: "What are logic gates?",
-                answer:
+                choices: [
+                  "Devices that amplify signals",
+                  "Basic building blocks of digital circuits",
+                  "Components that store data",
+                  "Units that measure electrical resistance",
+                ],
+                answer: 1,
+                explanation:
                   "Logic gates are fundamental building blocks of digital circuits.",
+                hint: "They are used in digital circuits.",
+                mascot: "Logical Bot",
               },
               {
                 questionId: 2,
+                questionType: "Multiple Choice",
                 questionText: "Explain Boolean algebra.",
-                answer:
+                choices: [
+                  "A type of advanced calculus",
+                  "A mathematical system for analyzing circuits",
+                  "A programming language",
+                  "A method to design mechanical systems",
+                ],
+                answer: 1,
+                explanation:
                   "Boolean algebra is a mathematical system used to analyze and simplify digital circuits.",
+                hint: "It's related to logic and circuits.",
+                mascot: "Logical Bot",
               },
               {
                 questionId: 3,
+                questionType: "Multiple Choice",
                 questionText: "Explain Life",
-                answer:
-                  "Boolean algebra is a mathematical system used to analyze and simplify digital circuits.",
+                choices: [
+                  "A programming language",
+                  "A mathematical system",
+                  "A digital circuit component",
+                  "A complex set of rules and experiences",
+                ],
+                answer: 3,
+                explanation:
+                  "Life is a complex set of rules and experiences, often requiring logical thinking.",
+                hint: "Think beyond circuits and mathematics.",
+                mascot: "Logical Bot",
               },
             ],
           },
@@ -59,15 +93,35 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
+                questionType: "Multiple Choice",
                 questionText: "What is a truth table?",
-                answer:
+                choices: [
+                  "A table showing logical relationships",
+                  "A data storage method",
+                  "A type of array",
+                  "A method to measure voltage",
+                ],
+                answer: 0,
+                explanation:
                   "A truth table is a mathematical table used in logic to determine the truth value of a complex expression.",
+                hint: "It helps in logic determination.",
+                mascot: "Logical Bot",
               },
               {
                 questionId: 2,
+                questionType: "Multiple Choice",
                 questionText: "Define combinatorial logic.",
-                answer:
+                choices: [
+                  "Logic based on combinations of input values",
+                  "A method to design software",
+                  "A system to measure circuits",
+                  "A storage method for data",
+                ],
+                answer: 0,
+                explanation:
                   "Combinatorial logic refers to digital circuits where the output is solely dependent on the input values.",
+                hint: "It's about input combinations.",
+                mascot: "Logical Bot",
               },
             ],
           },
@@ -76,15 +130,35 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
-                questionText: "What is a truth table?",
-                answer:
-                  "A truth table is a mathematical table used in logic to determine the truth value of a complex expression.",
+                questionType: "Multiple Choice",
+                questionText: "What is a Karnaugh map?",
+                choices: [
+                  "A tool for circuit simulation",
+                  "A method for simplifying Boolean expressions",
+                  "A programming language",
+                  "A data structure",
+                ],
+                answer: 1,
+                explanation:
+                  "A Karnaugh map is used for simplifying Boolean expressions.",
+                hint: "It's a visual tool.",
+                mascot: "Logical Bot",
               },
               {
                 questionId: 2,
-                questionText: "Define combinatorial logic.",
-                answer:
-                  "Combinatorial logic refers to digital circuits where the output is solely dependent on the input values.",
+                questionType: "Multiple Choice",
+                questionText: "Explain the AND gate.",
+                choices: [
+                  "Outputs true if at least one input is true",
+                  "Outputs true only if all inputs are true",
+                  "Inverts the input signal",
+                  "Outputs true if inputs are different",
+                ],
+                answer: 1,
+                explanation:
+                  "The AND gate outputs true only if all inputs are true.",
+                hint: "It requires all conditions to be true.",
+                mascot: "Logical Bot",
               },
             ],
           },
@@ -93,15 +167,34 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
-                questionText: "What is a truth table?",
-                answer:
-                  "A truth table is a mathematical table used in logic to determine the truth value of a complex expression.",
+                questionType: "Multiple Choice",
+                questionText: "What is a NOR gate?",
+                choices: [
+                  "Outputs true if at least one input is true",
+                  "Outputs true only if all inputs are true",
+                  "Inverts the input signal",
+                  "Outputs true if all inputs are false",
+                ],
+                answer: 3,
+                explanation:
+                  "The NOR gate outputs true if all inputs are false.",
+                hint: "It combines OR and NOT functions.",
+                mascot: "Logical Bot",
               },
               {
                 questionId: 2,
-                questionText: "Define combinatorial logic.",
-                answer:
-                  "Combinatorial logic refers to digital circuits where the output is solely dependent on the input values.",
+                questionType: "Multiple Choice",
+                questionText: "Define the NOT gate.",
+                choices: [
+                  "Outputs true if at least one input is true",
+                  "Inverts the input signal",
+                  "Outputs true if all inputs are false",
+                  "Outputs true only if all inputs are true",
+                ],
+                answer: 1,
+                explanation: "The NOT gate inverts the input signal.",
+                hint: "It provides the opposite value.",
+                mascot: "Logical Bot",
               },
             ],
           },
@@ -110,61 +203,35 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
-                questionText: "What is a truth table?",
-                answer:
-                  "A truth table is a mathematical table used in logic to determine the truth value of a complex expression.",
+                questionType: "Multiple Choice",
+                questionText: "What is a flip-flop?",
+                choices: [
+                  "A type of shoe",
+                  "A type of logical gate",
+                  "A memory storage element",
+                  "A sorting algorithm",
+                ],
+                answer: 2,
+                explanation:
+                  "A flip-flop is a memory storage element used in sequential logic circuits.",
+                hint: "It stores a bit of data.",
+                mascot: "Logical Bot",
               },
               {
                 questionId: 2,
-                questionText: "Define combinatorial logic.",
-                answer:
-                  "Combinatorial logic refers to digital circuits where the output is solely dependent on the input values.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 2,
-        unitText: "MULTI-DIMENSIONAL ARRAYS",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "Explain arrays in programming.",
-                answer:
-                  "An array is a data structure that stores a collection of elements of the same type.",
-              },
-              {
-                questionId: 2,
-                questionText: "What are multi-dimensional arrays?",
-                answer:
-                  "Multi-dimensional arrays are arrays of arrays, allowing storage of data in multiple dimensions.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 3,
-        unitText: "OBJECT ORIENTED PROGRAMMING",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What is object-oriented programming (OOP)?",
-                answer:
-                  "OOP is a programming paradigm based on the concept of 'objects', which can contain data, in the form of fields (often known as attributes), and code, in the form of procedures (often known as methods).",
-              },
-              {
-                questionId: 2,
-                questionText: "List some key principles of OOP.",
-                answer:
-                  "Encapsulation, inheritance, and polymorphism are key principles of OOP.",
+                questionType: "Multiple Choice",
+                questionText: "Describe sequential logic.",
+                choices: [
+                  "Logic that depends only on current inputs",
+                  "Logic that depends on current and past inputs",
+                  "Logic for sorting data",
+                  "Logic for arithmetic operations",
+                ],
+                answer: 1,
+                explanation:
+                  "Sequential logic depends on both current and past inputs.",
+                hint: "It has memory of past states.",
+                mascot: "Logical Bot",
               },
             ],
           },
@@ -185,15 +252,35 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
+                questionType: "Multiple Choice",
                 questionText: "What is an algorithm?",
-                answer:
+                choices: [
+                  "A step-by-step procedure",
+                  "A random process",
+                  "A data storage method",
+                  "A type of circuit",
+                ],
+                answer: 0,
+                explanation:
                   "An algorithm is a step-by-step procedure or formula for solving a problem.",
+                hint: "It's a methodical process.",
+                mascot: "Algorithm Bot",
               },
               {
                 questionId: 2,
+                questionType: "Multiple Choice",
                 questionText: "Why are algorithms important?",
-                answer:
+                choices: [
+                  "They store data",
+                  "They are fundamental to computer science",
+                  "They power everything from search engines to operating systems",
+                  "Both 1 and 2",
+                ],
+                answer: 3,
+                explanation:
                   "Algorithms are fundamental to computer science and are used to power everything from search engines to operating systems.",
+                hint: "They are central to many systems.",
+                mascot: "Algorithm Bot",
               },
             ],
           },
@@ -202,222 +289,146 @@ const courseData: { [key: string]: Course } = {
             questions: [
               {
                 questionId: 1,
+                questionType: "Multiple Choice",
                 questionText: "Explain sorting algorithms.",
-                answer:
+                choices: [
+                  "Algorithms that arrange data",
+                  "Algorithms that search for data",
+                  "Algorithms that store data",
+                  "Algorithms that compress data",
+                ],
+                answer: 0,
+                explanation:
                   "Sorting algorithms are algorithms that put elements of a list in a certain order.",
+                hint: "They arrange data in order.",
+                mascot: "Algorithm Bot",
               },
               {
                 questionId: 2,
+                questionType: "Multiple Choice",
                 questionText: "Describe searching algorithms.",
-                answer:
-                  "Searching algorithms are designed to find one or more items with specific properties in a collection of items.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 2,
-        unitText: "SORTING ALGORITHMS",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What is a bubble sort?",
-                answer:
-                  "Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-              },
-              {
-                questionId: 2,
-                questionText: "Explain merge sort.",
-                answer:
-                  "Merge sort is a divide and conquer algorithm that divides the unsorted list into n sublists, each containing one element, then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 3,
-        unitText: "SEARCHING ALGORITHMS",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What is binary search?",
-                answer:
-                  "Binary search is a search algorithm that finds the position of a target value within a sorted array.",
-              },
-              {
-                questionId: 2,
-                questionText: "Explain linear search.",
-                answer:
-                  "Linear search is a simple search algorithm that sequentially checks each element of the list until a match is found or the whole list has been searched.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 4,
-        unitText: "ADVANCED ALGORITHMS",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What are dynamic programming algorithms?",
-                answer:
-                  "Dynamic programming algorithms are algorithms that solve complex problems by breaking them down into simpler subproblems and storing the results of subproblems to avoid recomputation.",
-              },
-              {
-                questionId: 2,
-                questionText: "Explain greedy algorithms.",
-                answer:
-                  "Greedy algorithms are algorithms that make the locally optimal choice at each step with the hope of finding a global optimum.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 5,
-        unitText: "ADVANCED ALGORITHMS II",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What are backtracking algorithms?",
-                answer:
-                  "Backtracking algorithms are algorithms that solve problems incrementally by building up a solution piece by piece, removing solutions that fail to satisfy the constraints of the problem at any point.",
-              },
-              {
-                questionId: 2,
-                questionText: "Describe divide and conquer algorithms.",
-                answer:
-                  "Divide and conquer algorithms are algorithms that solve a problem by dividing it into smaller subproblems, solving the subproblems recursively, and combining their solutions to solve the original problem.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        unitId: 6,
-        unitText: "FUTURE OF ALGORITHMS",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What are quantum algorithms?",
-                answer:
-                  "Quantum algorithms are algorithms designed to run on quantum computers, taking advantage of quantum phenomena such as superposition and entanglement to perform computations.",
-              },
-              {
-                questionId: 2,
-                questionText: "Explain parallel algorithms.",
-                answer:
-                  "Parallel algorithms are algorithms that solve problems by executing multiple computations simultaneously, taking advantage of parallel processing capabilities.",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  "MATH 202": {
-    courseCode: "MATH 202",
-    courseTitle: "CALCULUS II",
-    units: [
-      {
-        unitId: 1,
-        unitText: "INTRODUCTION TO DATA STRUCTURES",
-        levels: [
-          {
-            levelId: 1,
-            questions: [
-              {
-                questionId: 1,
-                questionText: "What are data structures?",
-                answer:
-                  "Data structures are ways of organizing and storing data so that it can be accessed and used efficiently.",
-              },
-              {
-                questionId: 2,
-                questionText: "Explain arrays and linked lists.",
-                answer:
-                  "Arrays and linked lists are basic data structures used to store collections of data in computer memory.",
+                choices: [
+                  "Algorithms that arrange data",
+                  "Algorithms that find specific items",
+                  "Algorithms that store data",
+                  "Algorithms that compress data",
+                ],
+                answer: 1,
+                explanation:
+                  "Searching algorithms are algorithms designed to retrieve information stored within some data structure.",
+                hint: "They help find specific items.",
+                mascot: "Algorithm Bot",
               },
             ],
           },
           {
-            levelId: 2,
+            levelId: 3,
             questions: [
               {
                 questionId: 1,
-                questionText: "Describe stacks and queues.",
-                answer:
-                  "Stacks and queues are abstract data types that provide a way to access and manipulate data.",
+                questionType: "Multiple Choice",
+                questionText: "What is a binary search algorithm?",
+                choices: [
+                  "An algorithm that searches sorted data",
+                  "An algorithm that searches unsorted data",
+                  "An algorithm that sorts data",
+                  "An algorithm that compresses data",
+                ],
+                answer: 0,
+                explanation:
+                  "Binary search algorithm efficiently finds the position of a target value within a sorted array.",
+                hint: "It works on sorted data.",
+                mascot: "Algorithm Bot",
               },
               {
                 questionId: 2,
-                questionText: "What are hash tables?",
-                answer:
-                  "Hash tables are data structures that store key-value pairs and allow for efficient retrieval of values based on their keys.",
+                questionType: "Multiple Choice",
+                questionText: "Explain the concept of recursion.",
+                choices: [
+                  "A technique for compressing data",
+                  "A function that calls itself",
+                  "A method for storing data",
+                  "A type of sorting algorithm",
+                ],
+                answer: 1,
+                explanation:
+                  "Recursion is a method where the solution to a problem depends on solutions to smaller instances of the same problem.",
+                hint: "It's a self-referential process.",
+                mascot: "Algorithm Bot",
               },
             ],
           },
-        ],
-      },
-      {
-        unitId: 2,
-        unitText: "LINKED LISTS",
-        levels: [
           {
-            levelId: 1,
+            levelId: 4,
             questions: [
               {
                 questionId: 1,
-                questionText: "Explain singly linked lists.",
-                answer:
-                  "A singly linked list is a linear data structure where each element contains a data field and a reference (link) to the next element in the list.",
+                questionType: "Multiple Choice",
+                questionText: "What is dynamic programming?",
+                choices: [
+                  "A method for algorithm optimization",
+                  "A programming paradigm",
+                  "A method to store data",
+                  "A type of search algorithm",
+                ],
+                answer: 0,
+                explanation:
+                  "Dynamic programming is an optimization technique that solves problems by breaking them down into simpler subproblems.",
+                hint: "It's about breaking down problems.",
+                mascot: "Algorithm Bot",
               },
               {
                 questionId: 2,
-                questionText: "What are doubly linked lists?",
-                answer:
-                  "A doubly linked list is a linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called links, that are references to the previous and to the next node in the sequence of nodes.",
+                questionType: "Multiple Choice",
+                questionText: "Describe the greedy algorithm.",
+                choices: [
+                  "An algorithm that looks at the whole solution",
+                  "An algorithm that makes the locally optimal choice at each step",
+                  "An algorithm that sorts data",
+                  "An algorithm that compresses data",
+                ],
+                answer: 1,
+                explanation:
+                  "A greedy algorithm is an approach for solving problems by making the locally optimal choice at each stage with the hope of finding a global optimum.",
+                hint: "It's about local optimization.",
+                mascot: "Algorithm Bot",
               },
             ],
           },
-        ],
-      },
-      {
-        unitId: 3,
-        unitText: "TREES AND GRAPHS",
-        levels: [
           {
-            levelId: 1,
+            levelId: 5,
             questions: [
               {
                 questionId: 1,
-                questionText: "What are trees in data structures?",
-                answer:
-                  "A tree is a hierarchical data structure that consists of nodes connected by edges. Each node contains a value or data and can have zero or more child nodes.",
+                questionType: "Multiple Choice",
+                questionText: "What is a graph algorithm?",
+                choices: [
+                  "An algorithm that deals with graphs",
+                  "An algorithm that sorts data",
+                  "An algorithm that compresses data",
+                  "An algorithm for searching data",
+                ],
+                answer: 0,
+                explanation:
+                  "Graph algorithms are a set of instructions that traverse (visit nodes of) a graph.",
+                hint: "It's related to nodes and edges.",
+                mascot: "Algorithm Bot",
               },
               {
                 questionId: 2,
-                questionText: "Explain binary trees.",
-                answer:
-                  "A binary tree is a type of tree data structure in which each node has at most two children, referred to as the left child and the right child.",
+                questionType: "Multiple Choice",
+                questionText: "Explain the concept of backtracking.",
+                choices: [
+                  "A sorting algorithm",
+                  "A method for storing data",
+                  "An algorithm for solving problems incrementally",
+                  "A method for data compression",
+                ],
+                answer: 2,
+                explanation:
+                  "Backtracking is an algorithmic technique for solving problems incrementally by trying partial solutions and then abandoning them if they are not suitable.",
+                hint: "It involves trying and abandoning solutions.",
+                mascot: "Algorithm Bot",
               },
             ],
           },

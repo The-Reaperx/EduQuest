@@ -8,6 +8,7 @@ interface Props {
   choice2: string;
   choice3: string;
   choice4: string;
+  onNext: () => void;
 }
 function MCQQuestion({
   question,
