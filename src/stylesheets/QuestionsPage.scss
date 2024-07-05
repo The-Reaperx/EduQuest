@@ -36,6 +36,12 @@ $background-primary:#C8CCFF;
             padding-left: 18px;
             margin-top: 20px;
 
+            &:hover{
+                cursor:pointer;
+            }
+
+            
+
         }
     }
 
@@ -67,9 +73,42 @@ $background-primary:#C8CCFF;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    .power-ups{
+        display: flex;
+        justify-content: right;
+        padding-right: 35px;
+    }
+
+    .power-ups-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:30px;
+        height:200px;
+        background-color: $background-secondary;
+        border-radius: 30px;
+    
+        .power-ups-container-internal{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            align-self: center;
+            text-align: center;
+    
+            border:white;
+            height:98%;
+            width:20px;
+            border-width: 4px;
+            border-radius: 30px;
+            border-style: solid;
+        }
+    }
     .mascot{
-        padding-bottom: 50px;
-        padding-right: 15px;
+        padding-bottom: 40px;
+        padding-right: 25px;
         
     }
 }

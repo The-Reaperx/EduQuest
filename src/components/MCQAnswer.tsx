@@ -1,11 +1,12 @@
 interface Props {
   letter: string;
   text: string;
+  onClick: () => void;
 }
 
-function MCQAnswer({ letter, text }: Props) {
+function MCQAnswer({ letter, text, onClick }: Props) {
   return (
-    <div className="mcq-answers-container">
+    <div className="mcq-answers-container" onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1115.63 114"

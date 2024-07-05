@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import courseData from "../components/CourseData";
-import { Question } from "../components/CourseData";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import courseData, { Question } from "../components/CourseData";
 import MCQQuestion from "../components/MCQQuestion";
-import background from "../assets/images/profilePic.jpg";
+import confused from "../assets/mascot/confused.png";
+import disappointed from "../assets/mascot/dissappointed.png";
+import frown from "../assets/mascot/frown.png";
+import proud from "../assets/mascot/proud.png";
+import smile from "../assets/mascot/smile.png";
+
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
     courseCode: string;
@@ -15,27 +19,64 @@ function QuestionsPage() {
   const unitIdNumber = parseInt(unitId!, 10);
   const levelIdNumber = parseInt(levelId!, 10);
 
-  //Testing Stuff
-
+  // Fetch course data
   const course = courseData[courseCode!];
   const unit = course.units.find((unit) => unit.unitId === unitIdNumber);
   const level = unit!.levels.find((level) => level.levelId === levelIdNumber);
   const questions: Question[] = level!.questions;
 
-  // State to manage current question index
+  // State to manage current question index and scores
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [mascotEmotion, setMascotEmotion] = useState(smile);
 
   // Function to handle next question
   const nextQuestion = () => {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
-  //Handle Next Click
+  // Function to handle answer click
+  const handleAnswerClick = (selectedChoice: number) => {
+    const currentQuestion = questions[currentQuestionIndex];
+    const correctChoice = currentQuestion.answer; // Assuming correctChoice exists in Question type
+
+    if (selectedChoice === correctChoice) {
+      setCorrectAnswers((prevCount) => prevCount + 1);
+    } else {
+      setWrongAnswers((prevCount) => prevCount + 1);
+    }
+
+    nextQuestion();
+  };
+
+  // Handle Next Click
   const handleNextClick = () => {
     if (currentQuestionIndex < questions.length - 1) {
       nextQuestion();
     }
   };
+
+  //Mascot Emotions and Rendering
+
+  const determineMascotEmotion = () => {
+    if (wrongAnswers >= 3) {
+      setMascotEmotion(confused);
+    } else if (wrongAnswers === 2) {
+      setMascotEmotion(disappointed);
+    } else if (wrongAnswers === 1) {
+      setMascotEmotion(frown);
+    } else if (correctAnswers >= 2) {
+      setMascotEmotion(proud);
+    } else {
+      setMascotEmotion(smile);
+    }
+  };
+
+  // Update mascot emotion when scores change
+  useEffect(() => {
+    determineMascotEmotion();
+  }, [correctAnswers, wrongAnswers]);
 
   return (
     <div className="questions-page">
@@ -53,6 +94,7 @@ function QuestionsPage() {
               choice3={questions[currentQuestionIndex].choices[2]}
               choice4={questions[currentQuestionIndex].choices[3]}
               onNext={nextQuestion} // Pass nextQuestion function to MCQQuestion component
+              onAnswerClick={handleAnswerClick} // Pass handleAnswerClick function to MCQQuestion component
             />
           </div>
         )}
@@ -60,13 +102,19 @@ function QuestionsPage() {
         {currentQuestionIndex >= questions.length && (
           <div className="question">
             <p>No more questions.</p>
+            <p>Correct answers: {correctAnswers}</p>
+            <p>Wrong answers: {wrongAnswers}</p>
           </div>
         )}
       </div>
       <div className="question-right-graphics">
-        <div className="power-ups">P</div>
+        <div className="power-ups">
+          <div className="power-ups-container">
+            <div className="power-ups-container-internal"></div>
+          </div>
+        </div>
         <div className="mascot">
-          <img width={200} height={200} src={background}></img>
+          <img width={150} src={mascotEmotion} alt="mascot" />
         </div>
       </div>
     </div>

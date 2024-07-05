@@ -9,6 +9,7 @@ interface Props {
   choice3: string;
   choice4: string;
   onNext: () => void;
+  onAnswerClick: (selectedChoice: number) => void;
 }
 function MCQQuestion({
   question,
@@ -17,14 +18,34 @@ function MCQQuestion({
   choice2,
   choice3,
   choice4,
+  onAnswerClick,
 }: Props) {
+  const handleAnswerClick = (choice: number) => {
+    onAnswerClick(choice); // Call onAnswerClick with selected choice
+  };
   return (
     <div className="mcq-page">
       <MCQBanner question={question} questionNo={questionNo} />
-      <MCQAnswer letter="A" text={choice1} />
-      <MCQAnswer letter="B" text={choice2} />
-      <MCQAnswer letter="C" text={choice3} />
-      <MCQAnswer letter="D" text={choice4} />
+      <MCQAnswer
+        letter="A"
+        text={choice1}
+        onClick={() => handleAnswerClick(0)}
+      />
+      <MCQAnswer
+        letter="B"
+        text={choice2}
+        onClick={() => handleAnswerClick(1)}
+      />
+      <MCQAnswer
+        letter="C"
+        text={choice3}
+        onClick={() => handleAnswerClick(2)}
+      />
+      <MCQAnswer
+        letter="D"
+        text={choice4}
+        onClick={() => handleAnswerClick(3)}
+      />
     </div>
   );
 }
