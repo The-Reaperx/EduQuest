@@ -21,11 +21,13 @@ function ActiveLevel({ active, padding, level, onClick }: Props) {
     <div style={{ width: 120, paddingTop: padding, marginRight: 120 }}>
       <button
         onClick={handleClick}
+        disabled={!active} // Disable button if active is false
         style={{
           padding: 0,
           border: "none",
           background: "none",
-          cursor: "pointer",
+          cursor: active ? "pointer" : "default", // Change cursor based on active state
+          pointerEvents: active ? "auto" : "none", // Allow or disallow pointer events based on active state
         }}
       >
         <svg

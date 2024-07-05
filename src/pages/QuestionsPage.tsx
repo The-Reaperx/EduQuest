@@ -7,6 +7,7 @@ import disappointed from "../assets/mascot/dissappointed.png";
 import frown from "../assets/mascot/frown.png";
 import proud from "../assets/mascot/proud.png";
 import smile from "../assets/mascot/smile.png";
+import ChatBot from "react-chatbotify";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -30,6 +31,8 @@ function QuestionsPage() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [mascotEmotion, setMascotEmotion] = useState(smile);
+  const [mascotMessage, setMascotMessage] = useState("Hey there");
+  const [showMascotPopup, setShowMascotPopup] = useState(false); // State to manage popup visibility
 
   // Function to handle next question
   const nextQuestion = () => {
@@ -48,6 +51,7 @@ function QuestionsPage() {
     }
 
     nextQuestion();
+    setShowMascotPopup(false); // Hide the popup after answer click
   };
 
   // Handle Next Click
@@ -57,8 +61,7 @@ function QuestionsPage() {
     }
   };
 
-  //Mascot Emotions and Rendering
-
+  // Mascot Emotions and Rendering
   const determineMascotEmotion = () => {
     if (wrongAnswers >= 3) {
       setMascotEmotion(confused);
@@ -73,9 +76,20 @@ function QuestionsPage() {
     }
   };
 
-  // Update mascot emotion when scores change
+  // Update mascot emotion and message when scores change
   useEffect(() => {
     determineMascotEmotion();
+
+    // Change mascot message after 10 seconds
+    const timer1 = setTimeout(() => {
+      setMascotMessage(questions[currentQuestionIndex].hint);
+      setShowMascotPopup(true); // Show the popup after 10 seconds
+    }, 6000);
+
+    // Clear timeouts on component unmount or when scores change
+    return () => {
+      clearTimeout(timer1);
+    };
   }, [correctAnswers, wrongAnswers]);
 
   return (
@@ -113,6 +127,15 @@ function QuestionsPage() {
             <div className="power-ups-container-internal"></div>
           </div>
         </div>
+        {showMascotPopup && ( // Conditionally render the popup based on state
+          <div className="mascot-popup">
+            <div className="mascot-popup-container">
+              <div className="mascot-popup-internal">
+                <div className="popup-text">{mascotMessage}</div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="mascot">
           <img width={150} src={mascotEmotion} alt="mascot" />
         </div>
