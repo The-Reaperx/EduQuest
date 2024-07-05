@@ -30,7 +30,7 @@ function UploadBanner({ color, number, background, onOpenModal }: Props) {
           <g id="Layer_2" data-name="Layer 2">
             <g id="Layer_1-2" data-name="Layer 1">
               <polygon
-                className={`cls-2${number}`}
+                className={`cls-22${number}`}
                 points="0.5 763.84 0.5 37.34 13.81 37.34 13.81 25.06 26.05 25.06 26.05 12.78 38.29 12.78 38.29 0.5 249.62 0.5 249.62 11.41 261.86 11.41 261.86 23.69 274.11 23.69 274.11 35.97 287.41 35.97 287.41 763.16 275.17 763.16 275.17 775.44 262.93 775.44 262.93 787.72 250.69 787.72 250.69 800.68 38.29 800.68 38.29 788.4 26.05 788.4 26.05 776.12 13.81 776.12 13.81 763.84 0.5 763.84"
               />
               <g className="cls-3">
@@ -43,7 +43,7 @@ function UploadBanner({ color, number, background, onOpenModal }: Props) {
           </g>
 
           <style>
-            {`.cls-1{fill:none;clip-rule:evenodd;}.cls-2${number}{fill:${color};stroke:#000;stroke-miterlimit:10;fill-rule:evenodd;}.cls-3{clip-path:url(#clip-path);}.cls-4{fill:#fff;}`}
+            {`.cls-1{fill:none;clip-rule:evenodd;}.cls-22${number}{fill:${color};stroke:#000;stroke-miterlimit:10;fill-rule:evenodd;}.cls-3{clip-path:url(#clip-path);}.cls-4{fill:#fff;}`}
           </style>
         </svg>
         <div className="background-image">

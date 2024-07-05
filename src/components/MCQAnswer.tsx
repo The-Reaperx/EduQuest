@@ -9,7 +9,7 @@ function MCQAnswer({ letter, text }: Props) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1115.63 114"
-        style={{ width: "700px", position: "absolute" }}
+        style={{ width: "780px", position: "absolute" }}
       >
         <defs>
           <style>{`.cls-1{fill:#aaafe8;stroke:#0c0101;stroke-miterlimit:10;}.cls-1,.cls-2{fill-rule:evenodd;}.cls-2{fill:#fff;}`}</style>

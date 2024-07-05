@@ -60,7 +60,6 @@ function Home({ onOpenModal }: HomeProps) {
           />
         </div>
       </div>
-      <MCQQuestion />
     </div>
   );
 }

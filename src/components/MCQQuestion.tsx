@@ -1,19 +1,29 @@
 import MCQAnswer from "./MCQAnswer";
 import MCQBanner from "./MCQBanner";
 
-function MCQQuestion() {
+interface Props {
+  questionNo: number;
+  question: string;
+  choice1: string;
+  choice2: string;
+  choice3: string;
+  choice4: string;
+}
+function MCQQuestion({
+  question,
+  questionNo,
+  choice1,
+  choice2,
+  choice3,
+  choice4,
+}: Props) {
   return (
     <div className="mcq-page">
-      <div className="mcq-question-container">
-        <MCQBanner />
-        <div className="mcq-question">
-          Q1. How do you declare an array of Integers in Java?
-        </div>
-      </div>
-      <MCQAnswer letter="A" text="Forget about it" />
-      <MCQAnswer letter="B" text="Who needs an array" />
-      <MCQAnswer letter="C" text="Alt + F4" />
-      <MCQAnswer letter="D" text="None of the Above" />
+      <MCQBanner question={question} questionNo={questionNo} />
+      <MCQAnswer letter="A" text={choice1} />
+      <MCQAnswer letter="B" text={choice2} />
+      <MCQAnswer letter="C" text={choice3} />
+      <MCQAnswer letter="D" text={choice4} />
     </div>
   );
 }
