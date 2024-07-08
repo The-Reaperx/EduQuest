@@ -8,6 +8,7 @@ import frown from "../assets/mascot/frown.png";
 import proud from "../assets/mascot/proud.png";
 import smile from "../assets/mascot/smile.png";
 import ConfettiExplosion from "react-confetti-explosion";
+import DoughnutChart from "../components/DoughnutChart";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -123,6 +124,10 @@ function QuestionsPage() {
         {currentQuestionIndex >= questions.length && (
           <div className="question">
             <p>No more questions.</p>
+            <DoughnutChart
+              correctAnswers={correctAnswers}
+              wrongAnswers={wrongAnswers}
+            />
             <p>Correct answers: {correctAnswers}</p>
             <p>Wrong answers: {wrongAnswers}</p>
           </div>

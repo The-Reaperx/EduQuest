@@ -29,6 +29,7 @@ function NavBar({ onOpenModal }: NavbarProps) {
               />
             </form>
           </div>
+
           <button className="navbar-create" onClick={onOpenModal}>
             <div className="create-icon">
               <CreateIcon />

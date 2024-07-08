@@ -3,7 +3,7 @@ import Theme1 from "../assets/images/Theme1.png";
 import Theme2 from "../assets/images/Theme2.png";
 import Theme3 from "../assets/images/Theme3.png";
 import Theme4 from "../assets/images/Theme4.png";
-import UploadBackDrop from "../assets/images/UploadBackDrop.png";
+import UploadBackDrop from "../assets/images/UploadBackDrop2.png";
 import UploadBanner from "../components/UploadBanner";
 import MCQQuestion from "../components/MCQQuestion";
 import ChatBot from "react-chatbotify";
@@ -26,7 +26,7 @@ function Home({ onOpenModal }: HomeProps) {
             course="LOGIC DESIGN"
             rate="87%"
             number={1}
-            color="#AAAFE8"
+            color="#33326C"
             background={Theme1}
           />
           <Banner
@@ -54,7 +54,7 @@ function Home({ onOpenModal }: HomeProps) {
             background={Theme4}
           />
           <UploadBanner
-            color="#AAAFE8"
+            color="#8772E4"
             number={0}
             background={UploadBackDrop}
             onOpenModal={onOpenModal}

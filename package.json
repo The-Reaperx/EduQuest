@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@cascadia-code/scroll-to-hash-element": "^2.0.2",
+    "@codaworks/react-glow": "^1.0.6",
     "@trimbleinc/modus-react-bootstrap": "^1.2.4",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.3",
     "primeicons": "^7.0.0",
     "primereact": "^10.6.6",
     "react": "^18.3.1",

@@ -3,7 +3,7 @@ function CloudIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 91.04 72.88"
-      style={{ width: 130, fill: "#32316D" }}
+      style={{ width: 130, fill: "#F7F3FF" }}
     >
       <g id="Layer_2" data-name="Layer 2">
         <g id="Layer_1-2" data-name="Layer 1">
