@@ -27,7 +27,7 @@ function Home({ onOpenModal }: HomeProps) {
             rate="87%"
             number={1}
             color="#33326C"
-            background={Theme1}
+            background={Theme4}
           />
           <Banner
             code="CPCS 203"
@@ -50,8 +50,8 @@ function Home({ onOpenModal }: HomeProps) {
             course="CALCULUS II"
             rate="26%"
             number={4}
-            color="#090A58"
-            background={Theme4}
+            color="#3E4083"
+            background={Theme1}
           />
           <UploadBanner
             color="#8772E4"

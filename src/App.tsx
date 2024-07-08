@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import QuestionPage from "./pages/QuestionsPage";
 import QuestionsPage from "./pages/QuestionsPage";
 import ScrollToHashElement from "@cascadia-code/scroll-to-hash-element";
+import Lines from "./components/Lines";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +29,7 @@ function App() {
       <ScrollToHashElement behavior="smooth" inline="center" block="center" />
       <Modall isOpen={isModalOpen} onCloseModal={handleCloseModal} />
       <NavBar onOpenModal={handleOpenModal} />
+      <Lines />
       <Routes>
         <Route path="/" element={<Home onOpenModal={handleOpenModal} />} />
         <Route path="/course/:courseCode" element={<Levels />} />
