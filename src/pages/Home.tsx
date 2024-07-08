@@ -7,6 +7,7 @@ import UploadBackDrop from "../assets/images/UploadBackDrop2.png";
 import UploadBanner from "../components/UploadBanner";
 import MCQQuestion from "../components/MCQQuestion";
 import ChatBot from "react-chatbotify";
+import Lines from "../components/Lines";
 
 interface HomeProps {
   onOpenModal: () => void;
@@ -15,6 +16,7 @@ interface HomeProps {
 function Home({ onOpenModal }: HomeProps) {
   return (
     <div className="home">
+      <Lines />
       <div className="hero">
         <div className="hero-title">
           <div className="hero-graphics"></div>

@@ -45,7 +45,8 @@ $background-primary:#C8CCFF;
     align-items: center;
     width:90%;
     height:200px;
-    background-color: $background-secondary;
+    background: rgb(135,114,228);
+    background: linear-gradient(90deg, rgba(135,114,228,1) 56%, rgba(100,80,190,1) 84%);
     border-radius: 30px;
 
     .units-container-internal{
@@ -63,14 +64,14 @@ $background-primary:#C8CCFF;
         .unit-title{
           font-family: 'Press Start 2P';
           font-size: 22px;
-          color: $text-color-primary;
+          color: white;
           padding-bottom: 10px;
         }
 
         .unit-text{
           font-family: 'Press Start 2P';
           font-size: 18px;
-          color: $text-color-primary;
+          color: white;
 
         }
     }

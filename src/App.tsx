@@ -29,7 +29,6 @@ function App() {
       <ScrollToHashElement behavior="smooth" inline="center" block="center" />
       <Modall isOpen={isModalOpen} onCloseModal={handleCloseModal} />
       <NavBar onOpenModal={handleOpenModal} />
-      <Lines />
       <Routes>
         <Route path="/" element={<Home onOpenModal={handleOpenModal} />} />
         <Route path="/course/:courseCode" element={<Levels />} />

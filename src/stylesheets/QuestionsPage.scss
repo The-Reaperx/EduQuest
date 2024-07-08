@@ -13,19 +13,20 @@ $background-primary:#C8CCFF;
     .mcq-question-container{
         display: flex;
         align-items: center;
-        padding-left:5%;
+        padding-left:13%;
         padding-bottom:80px;
     }
 
     .mcq-answers-container{
         padding-bottom: 45px;
-        padding-left: 80px;
+        padding-left: 90px;
         position: relative;
 
         .mcq-answers{
             display:flex;
             z-index: 1;
             position:relative;
+
             width:700px;
             font-size: 14px;
             font-family: "Press Start 2P";
@@ -51,7 +52,7 @@ $background-primary:#C8CCFF;
         display: flex;
         align-items: center;
         justify-content: center;
-        width:800px;
+        width:900px;
         font-size: 22px;
         font-family: "Press Start 2P";
         color:$text-color-primary;

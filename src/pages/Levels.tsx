@@ -3,6 +3,8 @@ import LevelSelector from "../components/LevelSelector";
 import Unit from "../components/Unit";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import courseData from "../components/CourseData";
+import Lines from "../components/Lines";
+import LinesInverted from "../components/LinesInverted";
 
 function Levels() {
   const { courseCode } = useParams<{ courseCode: string }>();
@@ -20,6 +22,10 @@ function Levels() {
 
   return (
     <div className="levels">
+      <div className="levels-background">
+        <Lines />
+      </div>
+
       <div className="units-with-levels">
         {course.units.map((unit) => (
           <div id={`${courseCode}-${unit.unitId}`} key={unit.unitId}>
