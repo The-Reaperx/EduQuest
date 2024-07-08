@@ -4,11 +4,12 @@ function Lines() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 2951.19 1107.58"
       style={{
-        position: "absolute",
+        position: "fixed",
         zIndex: -2,
         fill: "#F1F6EF",
-        bottom: 100,
+        bottom: 0, // Adjust as needed
         transform: "scale(1.2)",
+        transformOrigin: "center",
       }}
     >
       <g id="Layer_2" data-name="Layer 2">

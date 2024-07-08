@@ -9,6 +9,7 @@ import proud from "../assets/mascot/proud.png";
 import smile from "../assets/mascot/smile.png";
 import ConfettiExplosion from "react-confetti-explosion";
 import DoughnutChart from "../components/DoughnutChart";
+import Lines from "../components/Lines";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -102,6 +103,7 @@ function QuestionsPage() {
 
   return (
     <div className="questions-page">
+      <Lines />
       <div className="questions-list">
         {currentQuestionIndex < questions.length && (
           <div

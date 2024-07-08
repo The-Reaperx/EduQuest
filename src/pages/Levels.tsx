@@ -1,4 +1,4 @@
-import ActiveLevel from "../assets/ActiveLevel";
+import ActiveLevel from "../components/ActiveLevel";
 import LevelSelector from "../components/LevelSelector";
 import Unit from "../components/Unit";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -25,7 +25,6 @@ function Levels() {
       <div className="levels-background">
         <Lines />
       </div>
-
       <div className="units-with-levels">
         {course.units.map((unit) => (
           <div id={`${courseCode}-${unit.unitId}`} key={unit.unitId}>

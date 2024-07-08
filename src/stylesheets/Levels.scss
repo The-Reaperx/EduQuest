@@ -25,7 +25,7 @@ $background-primary:#C8CCFF;
     }
     .level-selector{
         position: sticky;
-        top:0;
+        top:14px;
         width:2%;
         height:100%;
         margin-top:40px;
@@ -86,7 +86,7 @@ $background-primary:#C8CCFF;
     align-items: center;
     width:30px;
     height:700px;
-    background-color: $background-secondary;
+    background-color: #A391F1;
     border-radius: 30px;
 
     .levels-container-internal{
@@ -118,7 +118,7 @@ $background-primary:#C8CCFF;
             line-height: 35px; 
             border-radius: 50%; 
             text-align: center; 
-            background-color: $background-primary; 
+            background-color: #371AAC; 
             color: white; 
 
             &:hover{
@@ -136,4 +136,12 @@ $background-primary:#C8CCFF;
 
     }
 }
+
+.levels-background {
+    position: absolute; /* Ensures it stays behind other content */
+    height: 100%; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
+    overflow: hidden;
+    z-index:-3;
+  }
 

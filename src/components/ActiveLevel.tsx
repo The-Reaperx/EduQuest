@@ -8,8 +8,8 @@ interface Props {
 }
 
 function ActiveLevel({ active, padding, level, onClick }: Props) {
-  const fillColor1 = active ? "#aaafe8" : "#b0b0b0";
-  const fillColor2 = active ? "#E0E2FF" : "#d3d3d3";
+  const fillColor1 = active ? "#8772E4" : "#b0b0b0";
+  const fillColor2 = active ? "#CECAF5" : "#d3d3d3";
 
   const handleClick = () => {
     if (onClick) {
