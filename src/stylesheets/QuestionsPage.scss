@@ -161,3 +161,143 @@ $background-primary:#C8CCFF;
       }
       
 }
+
+
+//End Screen
+.question{
+  display: flex;
+  .mascot-end{
+    position:relative;
+    height:500px;
+    width:400px;
+    .mascot-text{
+      font-family: 'Press Start 2P';
+      font-size: 19px;
+      position:absolute;
+      top:400px;
+      left:55px;  
+      z-index: 1;
+      width:300px;
+      text-align: center;
+      color:white;
+    }
+
+  }
+  
+}
+
+
+.banner-end-containers{
+  display:flex;
+  
+}
+.banner-end-container{
+  position:absolute;
+  top:580px;
+  left:525px;
+  z-index: 1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .banner-end-number{
+    font-family: 'Press Start 2P';
+    font-size: 50px;
+    color:#30B16D;
+  }
+  .banner-end-subtext{
+    font-family: 'Press Start 2P';
+    font-size: 12px;
+    color:#32316D;
+  }
+  
+}
+
+.banner-end-container1{
+  position:absolute;
+  top:585px;
+  left:825px;
+  z-index: 1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .banner-end-number1{
+    font-family: 'Press Start 2P';
+    font-size: 50px;
+    color:#E34E4E;
+  }
+  .banner-end-subtext1{
+    font-family: 'Press Start 2P';
+    font-size: 12px;
+    color:#32316D;
+  }
+  
+  
+
+}
+
+.banner-end-container2{
+  position:absolute;
+  top:585px;
+  left:1160px;
+  z-index: 1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .banner-end-number2{
+    font-family: 'Press Start 2P';
+    font-size: 50px;
+    color:#8772E4;
+  }
+  .banner-end-subtext2{
+    font-family: 'Press Start 2P';
+    font-size: 12px;
+    color:#32316D;
+  }
+  
+  
+
+}
+
+.big-banner-end{
+  position: relative;
+
+  .big-banner-diagram{
+    position:absolute;
+    left:310px;
+    bottom:150px;
+    transform: scale(0.9);
+    z-index:1;
+  }
+
+  .big-banner-stars{
+    position: absolute;
+    left:130px;
+    bottom:100px;
+    transform: scale(0.7);
+    display: flex;
+    flex-direction: column;
+    z-index:1;
+
+  }
+
+  .big-banner-text{
+    position: absolute;
+    width:250px;
+    top:220px;
+    left:745px;
+    z-index: 1;
+    font-family: 'Press Start 2P';
+    font-size: 12px;
+    color:white;
+
+    .experience{
+      position:absolute;
+      top:80px;
+    }
+  }
+  
+}
+

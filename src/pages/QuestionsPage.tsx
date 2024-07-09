@@ -10,6 +10,10 @@ import smile from "../assets/mascot/smile.png";
 import ConfettiExplosion from "react-confetti-explosion";
 import DoughnutChart from "../components/DoughnutChart";
 import Lines from "../components/Lines";
+import MascotEnd from "../components/MascotEnd";
+import BannerEnd from "../components/BannerEnd";
+import MiniBannerEnd from "../components/MiniBannerEnd";
+import AnimatedGif from "../components/AnimatedGif";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -105,7 +109,7 @@ function QuestionsPage() {
     <div className="questions-page">
       <Lines />
       <div className="questions-list">
-        {currentQuestionIndex < questions.length && (
+        {currentQuestionIndex < questions.length ? (
           <div
             key={questions[currentQuestionIndex].questionId}
             className="question"
@@ -121,40 +125,60 @@ function QuestionsPage() {
               onAnswerClick={handleAnswerClick} // Pass handleAnswerClick function to MCQQuestion component
             />
           </div>
-        )}
-
-        {currentQuestionIndex >= questions.length && (
+        ) : (
           <div className="question">
-            <p>No more questions.</p>
-            <DoughnutChart
+            <MascotEnd />
+            <BannerEnd
+              correctAnswers={correctAnswers}
+              wrongAnswers={wrongAnswers}
+              xp={1280}
+            />
+            <MiniBannerEnd
+              correct={correctAnswers}
+              wrong={wrongAnswers}
+              hints={3}
+            />
+            {/* <div
+              className="animation"
+              style={{ transform: "scale(0.5)", zIndex: 1 }}
+            >
+              <AnimatedGif
+                src="https://i.pinimg.com/originals/84/8c/34/848c342a56e7854dec45b9349c21dfe5.gif"
+                alt="Animation"
+              />
+            </div> */}
+
+            {/* <DoughnutChart
               correctAnswers={correctAnswers}
               wrongAnswers={wrongAnswers}
             />
             <p>Correct answers: {correctAnswers}</p>
-            <p>Wrong answers: {wrongAnswers}</p>
+            <p>Wrong answers: {wrongAnswers}</p> */}
           </div>
         )}
       </div>
       {isExploding && <ConfettiExplosion />}
-      <div className="question-right-graphics">
-        <div className="power-ups">
-          <div className="power-ups-container">
-            <div className="power-ups-container-internal"></div>
-          </div>
-        </div>
-        {showMascotPopup && ( // Conditionally render the popup based on state
-          <div className="mascot-popup">
-            <div className="mascot-popup-container">
-              <div className="mascot-popup-internal">
-                <div className="popup-text">{mascotMessage}</div>
-              </div>
+      {currentQuestionIndex < questions.length && (
+        <div className="question-right-graphics">
+          <div className="power-ups">
+            <div className="power-ups-container">
+              <div className="power-ups-container-internal"></div>
             </div>
           </div>
-        )}
-        <div className="mascot">
-          <img width={150} src={mascotEmotion} alt="mascot" />
+          {showMascotPopup && ( // Conditionally render the popup based on state
+            <div className="mascot-popup">
+              <div className="mascot-popup-container">
+                <div className="mascot-popup-internal">
+                  <div className="popup-text">{mascotMessage}</div>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="mascot">
+            <img width={150} src={mascotEmotion} alt="mascot" />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
