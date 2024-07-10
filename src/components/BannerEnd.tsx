@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DoughnutChart from "./DoughnutChart";
 import ActiveStarEnd from "./ActiveStarEnd";
 import InactiveStarEnd from "./InactiveStarEnd";
@@ -8,6 +8,7 @@ interface Props {
   wrongAnswers: number;
   xp: number;
 }
+
 const BannerEnd: React.FC<Props> = ({ correctAnswers, wrongAnswers, xp }) => {
   const totalAnswers = correctAnswers + wrongAnswers;
   const progressRate = Math.floor((correctAnswers / totalAnswers) * 100);

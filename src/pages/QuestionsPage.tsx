@@ -8,12 +8,12 @@ import frown from "../assets/mascot/frown.png";
 import proud from "../assets/mascot/proud.png";
 import smile from "../assets/mascot/smile.png";
 import ConfettiExplosion from "react-confetti-explosion";
-import DoughnutChart from "../components/DoughnutChart";
 import Lines from "../components/Lines";
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
 import MiniBannerEnd from "../components/MiniBannerEnd";
 import AnimatedGif from "../components/AnimatedGif";
+import ButtonEnd from "../components/ButtonEnd";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -37,8 +37,9 @@ function QuestionsPage() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [mascotEmotion, setMascotEmotion] = useState(smile);
-  const [mascotMessage, setMascotMessage] = useState("Hey there");
+  const [mascotMessage, setMascotMessage] = useState("");
   const [showMascotPopup, setShowMascotPopup] = useState(false); // State to manage popup visibility
+  const [hintCount, setHintCount] = useState(0); // State to count hints
 
   // State for Confetti Explosion
   const [isExploding, setIsExploding] = useState(false);
@@ -67,13 +68,6 @@ function QuestionsPage() {
     setShowMascotPopup(false); // Hide the popup after answer click
   };
 
-  // Handle Next Click
-  const handleNextClick = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      nextQuestion();
-    }
-  };
-
   // Mascot Emotions and Rendering
   const determineMascotEmotion = () => {
     if (wrongAnswers >= 3) {
@@ -93,17 +87,23 @@ function QuestionsPage() {
   useEffect(() => {
     determineMascotEmotion();
 
-    // Change mascot message after 10 seconds
-    const timer1 = setTimeout(() => {
-      setMascotMessage(questions[currentQuestionIndex].hint);
-      setShowMascotPopup(true); // Show the popup after 10 seconds
+    // Change mascot message after 6 seconds (assuming 6000 milliseconds)
+    const timer = setTimeout(() => {
+      setMascotMessage(questions[currentQuestionIndex].hint); // Update mascot message to the hint text
+      setShowMascotPopup(true); // Show the popup with the hint
+      setHintCount((prevCount) => prevCount + 1); // Increment hint count
     }, 6000);
 
     // Clear timeouts on component unmount or when scores change
     return () => {
-      clearTimeout(timer1);
+      clearTimeout(timer);
     };
   }, [correctAnswers, wrongAnswers]);
+
+  //Calculations
+  const progressRate = Math.floor(
+    (correctAnswers / (correctAnswers + wrongAnswers)) * 100
+  );
 
   return (
     <div className="questions-page">
@@ -127,7 +127,7 @@ function QuestionsPage() {
           </div>
         ) : (
           <div className="question">
-            <MascotEnd />
+            <MascotEnd progressRate={progressRate} />
             <BannerEnd
               correctAnswers={correctAnswers}
               wrongAnswers={wrongAnswers}
@@ -136,24 +136,9 @@ function QuestionsPage() {
             <MiniBannerEnd
               correct={correctAnswers}
               wrong={wrongAnswers}
-              hints={3}
+              hints={hintCount}
             />
-            {/* <div
-              className="animation"
-              style={{ transform: "scale(0.5)", zIndex: 1 }}
-            >
-              <AnimatedGif
-                src="https://i.pinimg.com/originals/84/8c/34/848c342a56e7854dec45b9349c21dfe5.gif"
-                alt="Animation"
-              />
-            </div> */}
-
-            {/* <DoughnutChart
-              correctAnswers={correctAnswers}
-              wrongAnswers={wrongAnswers}
-            />
-            <p>Correct answers: {correctAnswers}</p>
-            <p>Wrong answers: {wrongAnswers}</p> */}
+            <ButtonEnd />
           </div>
         )}
       </div>
@@ -174,7 +159,7 @@ function QuestionsPage() {
               </div>
             </div>
           )}
-          <div className="mascot">
+          <div className="mascot" onClick={() => setShowMascotPopup(true)}>
             <img width={150} src={mascotEmotion} alt="mascot" />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Chart } from "primereact/chart";
 
 interface DoughnutChartProps {
@@ -10,12 +10,13 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({
   correctAnswers,
   wrongAnswers,
 }) => {
-  const [chartData, setChartData] = useState({});
-  const [chartOptions, setChartOptions] = useState({});
+  const documentStyle = useMemo(
+    () => getComputedStyle(document.documentElement),
+    []
+  );
 
-  useEffect(() => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    const data = {
+  const chartData = useMemo(() => {
+    return {
       labels: ["Correct Answers", "Wrong Answers"],
       datasets: [
         {
@@ -33,7 +34,10 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({
         },
       ],
     };
-    const options = {
+  }, [correctAnswers, wrongAnswers, documentStyle]);
+
+  const chartOptions = useMemo(() => {
+    return {
       cutout: "60%",
       plugins: {
         legend: {
@@ -46,10 +50,7 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({
         },
       },
     };
-
-    setChartData(data);
-    setChartOptions(options);
-  }, [correctAnswers, wrongAnswers]);
+  }, []);
 
   return (
     <div

@@ -126,7 +126,7 @@ $background-primary:#C8CCFF;
           width: 300px; /* Set a specific width */
           min-width: 200px; /* Minimum width */
           padding: 10px; /* Padding around the content */
-          background-color: $background-secondary;
+          background-color: #664ECA;
           border-radius: 30px;
           animation: fadeIn 0.5s ease-out forwards; /* Animation on initial popup */
       
@@ -142,7 +142,7 @@ $background-primary:#C8CCFF;
             font-family: "Press Start 2P";
             text-align: center;
             font-size: 14px;
-            color: #32316D;
+            color: white;
             word-wrap: break-word; /* Wrap long words */
           }
         }
@@ -170,18 +170,21 @@ $background-primary:#C8CCFF;
     position:relative;
     height:500px;
     width:400px;
-    .mascot-text{
-      font-family: 'Press Start 2P';
-      font-size: 19px;
-      position:absolute;
-      top:400px;
-      left:55px;  
-      z-index: 1;
-      width:300px;
-      text-align: center;
-      color:white;
-    }
+    .mascot-end-graphics{
+      height:400px;
 
+      .mascot-text{
+        font-family: 'Press Start 2P';
+        font-size: 19px;
+        position:absolute;
+        top:300px;
+        left:58px;  
+        z-index: 1;
+        width:300px;
+        text-align: center;
+        color:white;
+      }
+    }
   }
   
 }
@@ -299,5 +302,15 @@ $background-primary:#C8CCFF;
     }
   }
   
+}
+
+.back-to-map-text{
+  font-family: 'Press Start 2P';
+    font-size: 14px;
+    color:white;
+    position: absolute;
+    top:650px;
+    left:130px;
+    z-index: 1;
 }
 
