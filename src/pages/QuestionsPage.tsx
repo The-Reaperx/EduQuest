@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
 import MCQQuestion from "../components/MCQQuestion";
@@ -13,6 +13,7 @@ import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
 import MiniBannerEnd from "../components/MiniBannerEnd";
 import ButtonEnd from "../components/ButtonEnd";
+import LevelButton from "../components/LevelButton";
 
 function QuestionsPage() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -40,13 +41,19 @@ function QuestionsPage() {
   const [showMascotPopup, setShowMascotPopup] = useState(false); // State to manage popup visibility
   const [hintCount, setHintCount] = useState(0); // State to count hints
   const [correctChoice, setCorrectChoice] = useState(0);
+  const [showLevelButton, setShowLevelButton] = useState(false); // State to manage LevelButton visibility
 
   // State for Confetti Explosion
   const [isExploding, setIsExploding] = useState(false);
 
+  // Reference for the mascot popup
+  const popupRef = useRef<HTMLDivElement>(null);
+
   // Function to handle next question
   const nextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    setShowLevelButton(false); // Hide LevelButton on next question
+    setShowMascotPopup(false); // Hide Mascot popup on next question
   };
 
   // Function to handle answer click
@@ -61,12 +68,12 @@ function QuestionsPage() {
       setTimeout(() => {
         setIsExploding(false); // Hide confetti after a short duration
         nextQuestion();
-        setShowMascotPopup(false); // Hide the popup after answer click
       }, 2000);
     } else {
       setWrongAnswers((prevCount) => prevCount + 1);
       setMascotMessage(questions[currentQuestionIndex].explanation); // Update mascot message to the explanation text
       setShowMascotPopup(true);
+      setShowLevelButton(true); // Show LevelButton on wrong answer
       setTimeout(() => {
         nextQuestion(); // Move to the next question after 3 seconds
         setShowMascotPopup(false); // Hide the popup after answer click
@@ -110,6 +117,21 @@ function QuestionsPage() {
   const progressRate = Math.floor(
     (correctAnswers / (correctAnswers + wrongAnswers)) * 100
   );
+
+  /// Adjust the position of the popup based on the message length
+  useEffect(() => {
+    if (popupRef.current) {
+      const popupHeight = popupRef.current.offsetHeight;
+      const mascotMessageLength = mascotMessage.length;
+
+      // Example condition to adjust based on message length
+      if (mascotMessageLength > 50) {
+        popupRef.current.style.top = "-40px"; // Move higher if message is long
+      } else {
+        popupRef.current.style.top = "20px"; // Default position
+      }
+    }
+  }, [mascotMessage]);
 
   return (
     <div className="questions-page">
@@ -158,7 +180,7 @@ function QuestionsPage() {
             </div>
           </div>
           {showMascotPopup && ( // Conditionally render the popup based on state
-            <div className="mascot-popup">
+            <div className="mascot-popup" ref={popupRef}>
               <div className="mascot-popup-container">
                 <div className="mascot-popup-internal">
                   <div className="popup-text">{mascotMessage}</div>
@@ -169,6 +191,14 @@ function QuestionsPage() {
           <div className="mascot" onClick={() => setShowMascotPopup(true)}>
             <img width={150} src={mascotEmotion} alt="mascot" />
           </div>
+          {showLevelButton && ( // Conditionally render LevelButton only if showLevelButton is true
+            <LevelButton
+              onClick={() => {
+                nextQuestion();
+                setShowMascotPopup(false); // Hide Mascot popup on LevelButton click
+              }}
+            />
+          )}
         </div>
       )}
     </div>

@@ -145,3 +145,15 @@ $background-primary:#C8CCFF;
     z-index:-3;
   }
 
+//Next Level Button
+
+.next-question-text{          
+    position: absolute;
+    left: 95px;
+    bottom: 60px;
+    z-index: 1;
+    font-family: "Press Start 2P";
+    font-size: 16px;
+    color: white;
+
+}
