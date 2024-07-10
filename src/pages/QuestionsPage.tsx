@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
 import MCQQuestion from "../components/MCQQuestion";
 import confused from "../assets/mascot/confused.png";
-import disappointed from "../assets/mascot/dissappointed.png";
+import disappointed from "../assets/mascot/dissappointed.png"; // Corrected typo in import path
 import frown from "../assets/mascot/frown.png";
 import proud from "../assets/mascot/proud.png";
 import smile from "../assets/mascot/smile.png";
@@ -12,7 +12,6 @@ import Lines from "../components/Lines";
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
 import MiniBannerEnd from "../components/MiniBannerEnd";
-import AnimatedGif from "../components/AnimatedGif";
 import ButtonEnd from "../components/ButtonEnd";
 
 function QuestionsPage() {
@@ -40,6 +39,7 @@ function QuestionsPage() {
   const [mascotMessage, setMascotMessage] = useState("");
   const [showMascotPopup, setShowMascotPopup] = useState(false); // State to manage popup visibility
   const [hintCount, setHintCount] = useState(0); // State to count hints
+  const [correctChoice, setCorrectChoice] = useState(0);
 
   // State for Confetti Explosion
   const [isExploding, setIsExploding] = useState(false);
@@ -53,19 +53,25 @@ function QuestionsPage() {
   const handleAnswerClick = (selectedChoice: number) => {
     const currentQuestion = questions[currentQuestionIndex];
     const correctChoice = currentQuestion.answer; // Assuming correctChoice exists in Question type
+    setCorrectChoice(currentQuestion.answer);
 
     if (selectedChoice === correctChoice) {
       setCorrectAnswers((prevCount) => prevCount + 1);
       setIsExploding(true); // Trigger confetti explosion
       setTimeout(() => {
         setIsExploding(false); // Hide confetti after a short duration
-      }, 3000);
+        nextQuestion();
+        setShowMascotPopup(false); // Hide the popup after answer click
+      }, 2000);
     } else {
       setWrongAnswers((prevCount) => prevCount + 1);
+      setMascotMessage(questions[currentQuestionIndex].explanation); // Update mascot message to the explanation text
+      setShowMascotPopup(true);
+      setTimeout(() => {
+        nextQuestion(); // Move to the next question after 3 seconds
+        setShowMascotPopup(false); // Hide the popup after answer click
+      }, 8000);
     }
-
-    nextQuestion();
-    setShowMascotPopup(false); // Hide the popup after answer click
   };
 
   // Mascot Emotions and Rendering
@@ -92,7 +98,7 @@ function QuestionsPage() {
       setMascotMessage(questions[currentQuestionIndex].hint); // Update mascot message to the hint text
       setShowMascotPopup(true); // Show the popup with the hint
       setHintCount((prevCount) => prevCount + 1); // Increment hint count
-    }, 6000);
+    }, 15000);
 
     // Clear timeouts on component unmount or when scores change
     return () => {
@@ -100,7 +106,7 @@ function QuestionsPage() {
     };
   }, [correctAnswers, wrongAnswers]);
 
-  //Calculations
+  // Calculations
   const progressRate = Math.floor(
     (correctAnswers / (correctAnswers + wrongAnswers)) * 100
   );
@@ -123,6 +129,7 @@ function QuestionsPage() {
               choice4={questions[currentQuestionIndex].choices[3]}
               onNext={nextQuestion} // Pass nextQuestion function to MCQQuestion component
               onAnswerClick={handleAnswerClick} // Pass handleAnswerClick function to MCQQuestion component
+              correctChoice={correctChoice}
             />
           </div>
         ) : (

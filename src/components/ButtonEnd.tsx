@@ -3,10 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function ButtonEnd() {
   const navigate = useNavigate();
-  const { courseCode, unitId } = useParams<{
-    courseCode: string;
-    unitId: string;
-  }>();
+  const { courseCode } = useParams<{ courseCode: string }>();
 
   const handleClick = () => {
     navigate(`/course/${courseCode}`);

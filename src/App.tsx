@@ -8,10 +8,8 @@ import Modall from "./components/Modall";
 import { useState } from "react";
 import Levels from "./pages/Levels";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import QuestionPage from "./pages/QuestionsPage";
 import QuestionsPage from "./pages/QuestionsPage";
 import ScrollToHashElement from "@cascadia-code/scroll-to-hash-element";
-import Lines from "./components/Lines";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);

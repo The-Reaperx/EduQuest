@@ -18,7 +18,7 @@ $background-primary:#C8CCFF;
     }
 
     .mcq-answers-container{
-        padding-bottom: 45px;
+        padding-bottom: 30px;
         padding-left: 90px;
         position: relative;
 
@@ -26,6 +26,7 @@ $background-primary:#C8CCFF;
             display:flex;
             z-index: 1;
             position:relative;
+            height: 50px;
 
             width:700px;
             font-size: 14px;

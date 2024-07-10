@@ -9,6 +9,9 @@
 @import '@trimbleinc/modus-react-bootstrap/css/dist/modus-react-bootstrap.min.css';
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "primereact/resources/themes/lara-light-cyan/theme.css";
+@import 'tailwindcss/base'; 
+@import 'tailwindcss/components'; 
+@import 'tailwindcss/utilities';
 
 
 
@@ -36,3 +39,5 @@ $text-color-tertiary: #656EB4;
 html {
   scroll-behavior: smooth;
 }
+
+
