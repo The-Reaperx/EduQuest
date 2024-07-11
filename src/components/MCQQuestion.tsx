@@ -58,24 +58,28 @@ function MCQQuestion({
         text={choice1}
         onClick={() => handleAnswerClick(0)}
         fill={getFill(0)}
+        right="60"
       />
       <MCQAnswer
         letter="B"
         text={choice2}
         onClick={() => handleAnswerClick(1)}
         fill={getFill(1)}
+        right="60"
       />
       <MCQAnswer
         letter="C"
         text={choice3}
         onClick={() => handleAnswerClick(2)}
         fill={getFill(2)}
+        right="60"
       />
       <MCQAnswer
         letter="D"
         text={choice4}
         onClick={() => handleAnswerClick(3)}
         fill={getFill(3)}
+        right="60"
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
+
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
 import MiniBannerEnd from "../components/MiniBannerEnd";
@@ -65,7 +66,7 @@ function ChallengerMode() {
 
       setTimeout(() => {
         nextQuestion(); // Move to the next question after 3 seconds
-      }, 8000);
+      }, 2000);
     }
   };
 
@@ -80,7 +81,7 @@ function ChallengerMode() {
   const mcqQuestionRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (mcqQuestionRef.current) {
-      mcqQuestionRef.current.style.left = "-70px";
+      mcqQuestionRef.current.style.left = "210px";
     }
   }, [currentQuestionIndex]);
 

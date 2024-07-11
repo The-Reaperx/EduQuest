@@ -5,10 +5,10 @@ interface Props {
   text: string;
   onClick: () => void;
   fill: number;
-  right?: number;
+  right?: string;
 }
 
-function MCQAnswer({ letter, text, onClick, fill }: Props) {
+function MCQAnswer({ letter, text, onClick, fill, right }: Props) {
   const [fillColor, setFillColor] = useState("#FFFFFF");
   const [secondaryColor, setSecondaryColor] = useState("#8772E4");
 
@@ -49,7 +49,7 @@ function MCQAnswer({ letter, text, onClick, fill }: Props) {
         />
       </svg>
 
-      <div className="mcq-answers">
+      <div className="mcq-answers " style={{ marginRight: right }}>
         <div className="mcq-letter">{`${letter}.`}</div>
         <div className="mcq-answer">{text}</div>
       </div>
