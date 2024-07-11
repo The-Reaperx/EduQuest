@@ -1,0 +1,32 @@
+.challenger-mode{
+    margin-top: 45px;
+    position: relative;
+}
+.red-line {
+    position: fixed; /* Position it absolutely within its containing element */
+    z-index: 1;
+    top: 0; /* Pin it to the top of its container */
+    right: 27px;
+    width: 31px;
+    transform: scale(0.8);
+    background-color: #bb374e;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+  }
+
+  .enemy-bar {
+    width: 480px;
+    position: absolute;
+    transform: rotate(-90deg);
+    margin-top: 300px;
+    margin-left:1246px;
+  }
+  
+  .player-bar {
+    width: 470px;
+    position: absolute;
+    transform: rotate(-90deg);
+    margin-top: 300px;
+    margin-right: 100px;
+    right:1164px;
+  }
