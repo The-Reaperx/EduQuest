@@ -16,7 +16,7 @@
 
   .enemy-bar {
     width: 480px;
-    position: absolute;
+    position: fixed;
     transform: rotate(-90deg);
     margin-top: 300px;
     margin-left:1246px;
@@ -24,15 +24,47 @@
   
   .player-bar {
     width: 470px;
-    position: absolute;
+    position: fixed;
     transform: rotate(-90deg);
     margin-top: 300px;
     margin-right: 100px;
     right:1164px;
   }
 
+  .challenger-mode{
+    .questions-page{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .answer-container-c{
+    display: flex;
+    margin-top: 160px;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.75);
+    .answer-column-left{
+      margin-left: 250px;
+      margin-right: 120px;
+      display: flex;
+      flex-direction: column;
+      .answer-1{
+        
+      }
+    }
+    .answer-column-right{
+      .answer3{
+          
+        }
+      }
+    
+  }
 
-  
+
+
+
+
 
         
 

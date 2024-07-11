@@ -52,31 +52,45 @@ function MCQQuestionC({
         questionBannerRef={questionBannerRef}
         mcqQuestionRef={mcqQuestionRef}
       />
+      <div className="answer-container-c">
+        <div className="answer-column-left">
+          <div className="answer-1">
+            <MCQAnswer
+              letter="A"
+              text={choice1}
+              onClick={() => handleAnswerClick(0)}
+              fill={getFill(0)}
+            />
+          </div>
+          <div className="answer-2">
+            <MCQAnswer
+              letter="B"
+              text={choice2}
+              onClick={() => handleAnswerClick(1)}
+              fill={getFill(1)}
+            />
+          </div>
+        </div>
 
-      <MCQAnswer
-        letter="A"
-        text={choice1}
-        onClick={() => handleAnswerClick(0)}
-        fill={getFill(0)}
-      />
-      <MCQAnswer
-        letter="B"
-        text={choice2}
-        onClick={() => handleAnswerClick(1)}
-        fill={getFill(1)}
-      />
-      <MCQAnswer
-        letter="C"
-        text={choice3}
-        onClick={() => handleAnswerClick(2)}
-        fill={getFill(2)}
-      />
-      <MCQAnswer
-        letter="D"
-        text={choice4}
-        onClick={() => handleAnswerClick(3)}
-        fill={getFill(3)}
-      />
+        <div className="answer-column-right">
+          <div className="answer-3">
+            <MCQAnswer
+              letter="C"
+              text={choice3}
+              onClick={() => handleAnswerClick(2)}
+              fill={getFill(2)}
+            />
+          </div>
+          <div className="answer-4">
+            <MCQAnswer
+              letter="D"
+              text={choice4}
+              onClick={() => handleAnswerClick(3)}
+              fill={getFill(3)}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

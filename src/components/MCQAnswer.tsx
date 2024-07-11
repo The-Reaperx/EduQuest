@@ -5,6 +5,7 @@ interface Props {
   text: string;
   onClick: () => void;
   fill: number;
+  right?: number;
 }
 
 function MCQAnswer({ letter, text, onClick, fill }: Props) {
