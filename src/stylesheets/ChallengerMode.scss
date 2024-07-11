@@ -30,3 +30,27 @@
     margin-right: 100px;
     right:1164px;
   }
+
+  .challenger-mode {
+    .questions-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .question {
+        .mcq-page {
+          .mcq-question-container {
+            .question-banner {
+              position: absolute;
+              right: 80px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+        
+
+        
+

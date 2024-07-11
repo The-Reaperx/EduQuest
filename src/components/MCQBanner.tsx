@@ -13,6 +13,7 @@ function MCQBanner({ question, questionNo }: Props) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         transform="scale(0.8)"
+        className="question-banner"
         style={{ position: "absolute", right: 450 }}
       >
         <g clipPath="url(#clip0_41_82)">

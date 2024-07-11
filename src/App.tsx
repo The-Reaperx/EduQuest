@@ -35,7 +35,10 @@ function App() {
           path="/:courseCode/unit/:unitId/level/:levelId/questions"
           element={<QuestionsPage />}
         />
-        <Route path="/challenger" element={<ChallengerMode />}></Route>
+        <Route
+          path="/:courseCode/unit/:unitId/level/:levelId/challenger"
+          element={<ChallengerMode />}
+        ></Route>
       </Routes>
     </Router>
   );
