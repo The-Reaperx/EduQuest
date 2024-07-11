@@ -1,5 +1,7 @@
 import { styled } from "@mui/material/styles";
-
+interface Props {
+  progress: number;
+}
 import Stack from "@mui/material/Stack";
 
 import LinearProgress, {
@@ -19,11 +21,11 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-export default function PurpleProgressBar() {
+export default function PurpleProgressBar({ progress }: Props) {
   return (
     <Stack spacing={2} sx={{ flexGrow: 1 }}>
       <br />
-      <BorderLinearProgress variant="determinate" value={80} />
+      <BorderLinearProgress variant="determinate" value={progress} />
     </Stack>
   );
 }

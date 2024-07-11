@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
+import playerIdle from "../assets/animations/player-idle.gif";
+import EnemyIdle from "../assets/animations/enemy-idle.gif";
+import PlayerAttack from "../assets/animations/player-attack.gif";
+import EnemyAttack from "../assets/animations/enemy-attack.gif";
+import EnemyDamaged from "../assets/animations/enemy-damaged.gif";
+import PlayerDamaged from "../assets/animations/player-damaged.gif";
+import PlayerRocket from "../assets/animations/player-idle.gif";
+import EnemyRocket from "../assets/animations/enemy-rocket.gif";
 
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
@@ -12,6 +20,7 @@ import Lines from "../components/Lines";
 import RedProgressBar from "../components/RedProgressBar";
 import PurpleProgressBar from "../components/PurpleProgressBar";
 import MCQQuestionC from "../components/MCQQuestionC";
+import AnimatedGif from "../components/AnimatedGif";
 
 function ChallengerMode() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -39,6 +48,12 @@ function ChallengerMode() {
 
   const [hintCount, setHintCount] = useState(0); // State to count hints
   const [correctChoice, setCorrectChoice] = useState(0);
+  const [playerHp, setplayerHp] = useState(100);
+  const [enemyHp, setenemyHp] = useState(100);
+
+  // State to manage animation states
+  const [playerAnimation, setPlayerAnimation] = useState(playerIdle); // Default to playerIdle
+  const [enemyAnimation, setEnemyAnimation] = useState(EnemyIdle); // Default to enemyIdle
 
   // Reference for the mascot popup
   const popupRef = useRef<HTMLDivElement>(null);
@@ -56,19 +71,30 @@ function ChallengerMode() {
 
     if (selectedChoice === correctChoice) {
       setCorrectAnswers((prevCount) => prevCount + 1);
+      setPlayerAnimation(PlayerAttack);
+      setEnemyAnimation(EnemyDamaged);
+      setenemyHp(enemyHp - 20);
 
       setTimeout(() => {
         nextQuestion();
+        setPlayerAnimation(playerIdle);
+        setEnemyAnimation(EnemyIdle);
       }, 2000);
     } else {
       setWrongAnswers((prevCount) => prevCount + 1);
-      setMascotMessage(questions[currentQuestionIndex].explanation); // Update mascot message to the explanation text
+
+      setPlayerAnimation(PlayerDamaged);
+      setEnemyAnimation(EnemyAttack);
+      setplayerHp(playerHp - 20);
 
       setTimeout(() => {
         nextQuestion(); // Move to the next question after 3 seconds
+        setPlayerAnimation(playerIdle);
+        setEnemyAnimation(EnemyIdle);
       }, 2000);
     }
   };
+  useEffect(() => {}, [playerHp, enemyHp]);
 
   //Referencing
   const questionBannerRef = useRef<SVGSVGElement>(null);
@@ -132,10 +158,23 @@ function ChallengerMode() {
       <ChallengerLevelBarLeft />
       <ChallengerLevelBarRight />
       <div className="enemy-bar">
-        <RedProgressBar />
+        <RedProgressBar progress={enemyHp} />
       </div>
       <div className="player-bar">
-        <PurpleProgressBar />
+        <PurpleProgressBar progress={playerHp} />
+      </div>
+      <div
+        className="player-idle"
+        style={{ position: "absolute", top: 180, left: 150 }}
+      >
+        <AnimatedGif src={playerAnimation} width={200} />
+      </div>
+
+      <div
+        className="enemy-idle"
+        style={{ position: "absolute", top: 160, right: 150 }}
+      >
+        <AnimatedGif src={enemyAnimation} width={200} />
       </div>
 
       <div className="questions-page">
@@ -160,19 +199,24 @@ function ChallengerMode() {
               />
             </div>
           ) : (
-            <div className="question">
+            <div
+              className="question"
+              style={{ position: "absolute", right: 1075 }}
+            >
               <MascotEnd progressRate={progressRate} />
               <BannerEnd
                 correctAnswers={correctAnswers}
                 wrongAnswers={wrongAnswers}
                 xp={1280}
               />
-              <MiniBannerEnd
-                correct={correctAnswers}
-                wrong={wrongAnswers}
-                hints={hintCount}
-              />
-              <ButtonEnd />
+              <div className="question-bottom" style={{ marginBottom: 200 }}>
+                <MiniBannerEnd
+                  correct={correctAnswers}
+                  wrong={wrongAnswers}
+                  hints={hintCount}
+                />
+                <ButtonEnd />
+              </div>
             </div>
           )}
         </div>
