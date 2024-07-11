@@ -61,6 +61,7 @@ function MCQQuestionC({
               onClick={() => handleAnswerClick(0)}
               fill={getFill(0)}
               right="160px"
+              fontsize="18px"
             />
           </div>
           <div className="answer-2">
@@ -70,6 +71,7 @@ function MCQQuestionC({
               onClick={() => handleAnswerClick(1)}
               fill={getFill(1)}
               right="160px"
+              fontsize="18px"
             />
           </div>
         </div>
@@ -82,6 +84,7 @@ function MCQQuestionC({
               onClick={() => handleAnswerClick(2)}
               fill={getFill(2)}
               right="160px"
+              fontsize="18px"
             />
           </div>
           <div className="answer-4">
@@ -91,6 +94,7 @@ function MCQQuestionC({
               onClick={() => handleAnswerClick(3)}
               fill={getFill(3)}
               right="160px"
+              fontsize="18px"
             />
           </div>
         </div>

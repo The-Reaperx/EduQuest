@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
-import playerIdle from "../assets/animations/player-idle.gif";
-import EnemyIdle from "../assets/animations/enemy-idle.gif";
+import playerIdle from "../assets/animations/player-idle 2.gif";
+import EnemyIdle from "../assets/animations/enemy-idle-white-cut.gif";
 import PlayerAttack from "../assets/animations/player-attack.gif";
 import EnemyAttack from "../assets/animations/enemy-attack.gif";
 import EnemyDamaged from "../assets/animations/enemy-damaged.gif";
 import PlayerDamaged from "../assets/animations/player-damaged.gif";
-import PlayerRocket from "../assets/animations/player-idle.gif";
+import PlayerRocket from "../assets/animations/player-rocket.gif";
 import EnemyRocket from "../assets/animations/enemy-rocket.gif";
+import AnimatedGif from "../components/AnimatedGif";
 
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
@@ -20,7 +21,6 @@ import Lines from "../components/Lines";
 import RedProgressBar from "../components/RedProgressBar";
 import PurpleProgressBar from "../components/PurpleProgressBar";
 import MCQQuestionC from "../components/MCQQuestionC";
-import AnimatedGif from "../components/AnimatedGif";
 
 function ChallengerMode() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -43,13 +43,11 @@ function ChallengerMode() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
-
   const [mascotMessage, setMascotMessage] = useState("");
-
   const [hintCount, setHintCount] = useState(0); // State to count hints
   const [correctChoice, setCorrectChoice] = useState(0);
-  const [playerHp, setplayerHp] = useState(100);
-  const [enemyHp, setenemyHp] = useState(100);
+  const [playerHp, setPlayerHp] = useState(100);
+  const [enemyHp, setEnemyHp] = useState(100);
 
   // State to manage animation states
   const [playerAnimation, setPlayerAnimation] = useState(playerIdle); // Default to playerIdle
@@ -73,7 +71,7 @@ function ChallengerMode() {
       setCorrectAnswers((prevCount) => prevCount + 1);
       setPlayerAnimation(PlayerAttack);
       setEnemyAnimation(EnemyDamaged);
-      setenemyHp(enemyHp - 20);
+      setEnemyHp((prevHp) => Math.max(prevHp - 40, 0)); // Decrease enemy HP
 
       setTimeout(() => {
         nextQuestion();
@@ -85,7 +83,7 @@ function ChallengerMode() {
 
       setPlayerAnimation(PlayerDamaged);
       setEnemyAnimation(EnemyAttack);
-      setplayerHp(playerHp - 20);
+      setPlayerHp((prevHp) => Math.max(prevHp - 20, 0)); // Decrease player HP
 
       setTimeout(() => {
         nextQuestion(); // Move to the next question after 3 seconds
@@ -94,9 +92,18 @@ function ChallengerMode() {
       }, 2000);
     }
   };
-  useEffect(() => {}, [playerHp, enemyHp]);
 
-  //Referencing
+  // Check game end conditions when playerHp or enemyHp reaches 0
+  useEffect(() => {
+    if (playerHp === 0 || enemyHp === 0) {
+      // Implement your game-end logic here, such as showing a game-over screen or redirecting
+      console.log("Game Over!");
+      // Example of redirecting to a game-over route
+      // history.push("/game-over");
+    }
+  }, [playerHp, enemyHp]);
+
+  // Referencing
   const questionBannerRef = useRef<SVGSVGElement>(null);
   useEffect(() => {
     if (questionBannerRef.current) {
@@ -163,19 +170,25 @@ function ChallengerMode() {
       <div className="player-bar">
         <PurpleProgressBar progress={playerHp} />
       </div>
-      <div
-        className="player-idle"
-        style={{ position: "absolute", top: 180, left: 150 }}
-      >
-        <AnimatedGif src={playerAnimation} width={200} />
-      </div>
 
-      <div
-        className="enemy-idle"
-        style={{ position: "absolute", top: 160, right: 150 }}
-      >
-        <AnimatedGif src={enemyAnimation} width={200} />
-      </div>
+      {/* Conditional rendering of animations */}
+      {currentQuestionIndex < questions.length && (
+        <>
+          <div
+            className="player-idle"
+            style={{ position: "absolute", top: 180, left: 150 }}
+          >
+            <AnimatedGif src={playerAnimation} width={200} />
+          </div>
+
+          <div
+            className="enemy-idle"
+            style={{ position: "absolute", top: 210, right: 150 }}
+          >
+            <AnimatedGif src={enemyAnimation} width={150} />
+          </div>
+        </>
+      )}
 
       <div className="questions-page">
         <div className="questions-list">
@@ -209,14 +222,8 @@ function ChallengerMode() {
                 wrongAnswers={wrongAnswers}
                 xp={1280}
               />
-              <div className="question-bottom" style={{ marginBottom: 200 }}>
-                <MiniBannerEnd
-                  correct={correctAnswers}
-                  wrong={wrongAnswers}
-                  hints={hintCount}
-                />
-                <ButtonEnd />
-              </div>
+
+              <ButtonEnd />
             </div>
           )}
         </div>
