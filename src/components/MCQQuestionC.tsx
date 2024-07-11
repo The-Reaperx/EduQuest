@@ -16,7 +16,7 @@ interface Props {
   mcqQuestionRef?: React.RefObject<HTMLDivElement>;
 }
 
-function MCQQuestion({
+function MCQQuestionC({
   question,
   questionNo,
   choice1,
@@ -81,4 +81,4 @@ function MCQQuestion({
   );
 }
 
-export default MCQQuestion;
+export default MCQQuestionC;

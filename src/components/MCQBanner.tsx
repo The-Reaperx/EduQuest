@@ -1,9 +1,16 @@
 interface Props {
   question: string;
   questionNo: number;
+  questionBannerRef?: React.RefObject<SVGSVGElement>;
+  mcqQuestionRef?: React.RefObject<HTMLDivElement>;
 }
 
-function MCQBanner({ question, questionNo }: Props) {
+function MCQBanner({
+  question,
+  questionNo,
+  questionBannerRef,
+  mcqQuestionRef,
+}: Props) {
   return (
     <div className="mcq-question-container">
       <svg
@@ -14,6 +21,7 @@ function MCQBanner({ question, questionNo }: Props) {
         xmlns="http://www.w3.org/2000/svg"
         transform="scale(0.8)"
         className="question-banner"
+        ref={questionBannerRef}
         style={{ position: "absolute", right: 450 }}
       >
         <g clipPath="url(#clip0_41_82)">
@@ -61,7 +69,10 @@ function MCQBanner({ question, questionNo }: Props) {
         </defs>
       </svg>
 
-      <div className="mcq-question">{`${questionNo}. ${question}`}</div>
+      <div
+        className="mcq-question"
+        ref={mcqQuestionRef}
+      >{`${questionNo}. ${question}`}</div>
     </div>
   );
 }

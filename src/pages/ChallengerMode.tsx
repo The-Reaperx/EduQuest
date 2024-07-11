@@ -1,23 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
-import MCQQuestion from "../components/MCQQuestion";
-import confused from "../assets/mascot/confused.png";
-import disappointed from "../assets/mascot/dissappointed.png"; // Corrected typo in import path
-import frown from "../assets/mascot/frown.png";
-import proud from "../assets/mascot/proud.png";
-import smile from "../assets/mascot/smile.png";
-import ConfettiExplosion from "react-confetti-explosion";
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
 import MiniBannerEnd from "../components/MiniBannerEnd";
 import ButtonEnd from "../components/ButtonEnd";
-import LevelButton from "../components/LevelButton";
 import ChallengerLevelBarLeft from "../components/ChallengerLevelBarLeft";
 import ChallengerLevelBarRight from "../components/ChallengerLevelBarRight";
 import Lines from "../components/Lines";
 import RedProgressBar from "../components/RedProgressBar";
 import PurpleProgressBar from "../components/PurpleProgressBar";
+import MCQQuestionC from "../components/MCQQuestionC";
 
 function ChallengerMode() {
   const { courseCode, unitId, levelId } = useParams<{
@@ -40,15 +33,11 @@ function ChallengerMode() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
-  const [mascotEmotion, setMascotEmotion] = useState(smile);
+
   const [mascotMessage, setMascotMessage] = useState("");
-  const [showMascotPopup, setShowMascotPopup] = useState(false); // State to manage popup visibility
+
   const [hintCount, setHintCount] = useState(0); // State to count hints
   const [correctChoice, setCorrectChoice] = useState(0);
-  const [showLevelButton, setShowLevelButton] = useState(false); // State to manage LevelButton visibility
-
-  // State for Confetti Explosion
-  const [isExploding, setIsExploding] = useState(false);
 
   // Reference for the mascot popup
   const popupRef = useRef<HTMLDivElement>(null);
@@ -56,8 +45,6 @@ function ChallengerMode() {
   // Function to handle next question
   const nextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    setShowLevelButton(false); // Hide LevelButton on next question
-    setShowMascotPopup(false); // Hide Mascot popup on next question
   };
 
   // Function to handle answer click
@@ -68,46 +55,47 @@ function ChallengerMode() {
 
     if (selectedChoice === correctChoice) {
       setCorrectAnswers((prevCount) => prevCount + 1);
-      setIsExploding(true); // Trigger confetti explosion
+
       setTimeout(() => {
-        setIsExploding(false); // Hide confetti after a short duration
         nextQuestion();
       }, 2000);
     } else {
       setWrongAnswers((prevCount) => prevCount + 1);
       setMascotMessage(questions[currentQuestionIndex].explanation); // Update mascot message to the explanation text
-      setShowMascotPopup(true);
-      setShowLevelButton(true); // Show LevelButton on wrong answer
+
       setTimeout(() => {
         nextQuestion(); // Move to the next question after 3 seconds
-        setShowMascotPopup(false); // Hide the popup after answer click
       }, 8000);
     }
   };
 
-  // Mascot Emotions and Rendering
-  const determineMascotEmotion = () => {
-    if (wrongAnswers >= 3) {
-      setMascotEmotion(confused);
-    } else if (wrongAnswers === 2) {
-      setMascotEmotion(disappointed);
-    } else if (wrongAnswers === 1) {
-      setMascotEmotion(frown);
-    } else if (correctAnswers >= 2) {
-      setMascotEmotion(proud);
-    } else {
-      setMascotEmotion(smile);
+  //Referencing
+  const questionBannerRef = useRef<SVGSVGElement>(null);
+  useEffect(() => {
+    if (questionBannerRef.current) {
+      questionBannerRef.current.style.left = "210px";
     }
-  };
+  }, [currentQuestionIndex]);
+
+  const mcqQuestionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (mcqQuestionRef.current) {
+      mcqQuestionRef.current.style.left = "-70px";
+    }
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    if (questionBannerRef.current) {
+      questionBannerRef.current.style.left = "210px";
+    }
+  }, [currentQuestionIndex]);
 
   // Update mascot emotion and message when scores change
   useEffect(() => {
-    determineMascotEmotion();
-
     // Change mascot message after 6 seconds (assuming 6000 milliseconds)
     const timer = setTimeout(() => {
       setMascotMessage(questions[currentQuestionIndex].hint); // Update mascot message to the hint text
-      setShowMascotPopup(true); // Show the popup with the hint
+
       setHintCount((prevCount) => prevCount + 1); // Increment hint count
     }, 15000);
 
@@ -156,7 +144,7 @@ function ChallengerMode() {
               key={questions[currentQuestionIndex].questionId}
               className="question"
             >
-              <MCQQuestion
+              <MCQQuestionC
                 question={questions[currentQuestionIndex].questionText}
                 questionNo={questions[currentQuestionIndex].questionId}
                 choice1={questions[currentQuestionIndex].choices[0]}
@@ -166,6 +154,8 @@ function ChallengerMode() {
                 onNext={nextQuestion} // Pass nextQuestion function to MCQQuestion component
                 onAnswerClick={handleAnswerClick} // Pass handleAnswerClick function to MCQQuestion component
                 correctChoice={correctChoice}
+                questionBannerRef={questionBannerRef}
+                mcqQuestionRef={mcqQuestionRef}
               />
             </div>
           ) : (
