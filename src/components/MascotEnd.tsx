@@ -48,7 +48,7 @@ function MascotEnd({ progressRate }: Props) {
             height="185.262"
             rx="57"
             stroke="white"
-            stroke-width="6"
+            strokeWidth="6"
           />
           <defs>
             <pattern

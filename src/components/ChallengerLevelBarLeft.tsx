@@ -31,7 +31,7 @@ function ChallengerLevelBarLeft() {
           transform="rotate(90 63.6868 9.9668)"
           fill="#E8E3FF"
           stroke="white"
-          stroke-width="6"
+          strokeWidth="6"
         />
         <circle
           cx="45.4273"
@@ -39,7 +39,7 @@ function ChallengerLevelBarLeft() {
           r="38.4273"
           fill="white"
           stroke="#8772E4"
-          stroke-width="6"
+          strokeWidth="6"
         />
         <path
           d="M45 27.6698C47.398 24.8098 51.072 23 54.9 23C61.676 23 67 28.4071 67 35.2888C67 43.7277 59.5322 50.6052 48.2179 61.0251L48.19 61.0507L45 64L41.81 61.073L41.7232 60.9928C30.4418 50.5811 23 43.713 23 35.2888C23 28.4071 28.324 23 35.1 23C38.928 23 42.602 24.8098 45 27.6698Z"
@@ -56,7 +56,7 @@ function ChallengerLevelBarLeft() {
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

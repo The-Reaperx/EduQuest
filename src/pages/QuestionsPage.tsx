@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
 import MCQQuestion from "../components/MCQQuestion";
@@ -74,10 +74,6 @@ function QuestionsPage() {
       setMascotMessage(questions[currentQuestionIndex].explanation); // Update mascot message to the explanation text
       setShowMascotPopup(true);
       setShowLevelButton(true); // Show LevelButton on wrong answer
-      setTimeout(() => {
-        nextQuestion(); // Move to the next question after 3 seconds
-        setShowMascotPopup(false); // Hide the popup after answer click
-      }, 8000);
     }
   };
 
@@ -126,7 +122,7 @@ function QuestionsPage() {
 
       // Example condition to adjust based on message length
       if (mascotMessageLength > 50) {
-        popupRef.current.style.top = "-40px"; // Move higher if message is long
+        popupRef.current.style.top = "-45px"; // Move higher if message is long
       } else {
         popupRef.current.style.top = "20px"; // Default position
       }

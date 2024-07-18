@@ -32,7 +32,7 @@ function ChallengerLevelBarRight() {
         transform="rotate(90 59.6868 16.9668)"
         fill="#FFD0D9"
         stroke="white"
-        stroke-width="6"
+        strokeWidth="6"
       />
       <circle
         cx="41.4273"
@@ -40,7 +40,7 @@ function ChallengerLevelBarRight() {
         r="38.4273"
         fill="white"
         stroke="#BB374E"
-        stroke-width="6"
+        strokeWidth="6"
       />
       <rect
         x="14.7766"

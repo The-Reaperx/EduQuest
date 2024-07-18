@@ -44,7 +44,6 @@ function ChallengerMode() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [mascotMessage, setMascotMessage] = useState("");
-  const [hintCount, setHintCount] = useState(0); // State to count hints
   const [correctChoice, setCorrectChoice] = useState(0);
   const [playerHp, setPlayerHp] = useState(100);
   const [enemyHp, setEnemyHp] = useState(100);
@@ -83,7 +82,7 @@ function ChallengerMode() {
 
       setPlayerAnimation(PlayerDamaged);
       setEnemyAnimation(EnemyAttack);
-      setPlayerHp((prevHp) => Math.max(prevHp - 20, 0)); // Decrease player HP
+      setPlayerHp((prevHp) => Math.max(prevHp - 40, 0)); // Decrease player HP
 
       setTimeout(() => {
         nextQuestion(); // Move to the next question after 3 seconds
@@ -92,16 +91,6 @@ function ChallengerMode() {
       }, 2000);
     }
   };
-
-  // Check game end conditions when playerHp or enemyHp reaches 0
-  useEffect(() => {
-    if (playerHp === 0 || enemyHp === 0) {
-      // Implement your game-end logic here, such as showing a game-over screen or redirecting
-      console.log("Game Over!");
-      // Example of redirecting to a game-over route
-      // history.push("/game-over");
-    }
-  }, [playerHp, enemyHp]);
 
   // Referencing
   const questionBannerRef = useRef<SVGSVGElement>(null);
@@ -129,8 +118,6 @@ function ChallengerMode() {
     // Change mascot message after 6 seconds (assuming 6000 milliseconds)
     const timer = setTimeout(() => {
       setMascotMessage(questions[currentQuestionIndex].hint); // Update mascot message to the hint text
-
-      setHintCount((prevCount) => prevCount + 1); // Increment hint count
     }, 15000);
 
     // Clear timeouts on component unmount or when scores change
@@ -139,7 +126,7 @@ function ChallengerMode() {
     };
   }, [correctAnswers, wrongAnswers]);
 
-  // Calculations
+  // Calculations for End Screen
   const progressRate = Math.floor(
     (correctAnswers / (correctAnswers + wrongAnswers)) * 100
   );
@@ -192,7 +179,9 @@ function ChallengerMode() {
 
       <div className="questions-page">
         <div className="questions-list">
-          {currentQuestionIndex < questions.length ? (
+          {currentQuestionIndex < questions.length &&
+          playerHp !== 0 &&
+          enemyHp !== 0 ? (
             <div
               key={questions[currentQuestionIndex].questionId}
               className="question"
