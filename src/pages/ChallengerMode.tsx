@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import courseData, { Question } from "../components/CourseData";
 import playerIdle from "../assets/animations/player-idle 2.gif";
@@ -7,13 +7,10 @@ import PlayerAttack from "../assets/animations/player-attack.gif";
 import EnemyAttack from "../assets/animations/enemy-attack.gif";
 import EnemyDamaged from "../assets/animations/enemy-damaged.gif";
 import PlayerDamaged from "../assets/animations/player-damaged.gif";
-import PlayerRocket from "../assets/animations/player-rocket.gif";
-import EnemyRocket from "../assets/animations/enemy-rocket.gif";
 import AnimatedGif from "../components/AnimatedGif";
 
 import MascotEnd from "../components/MascotEnd";
 import BannerEnd from "../components/BannerEnd";
-import MiniBannerEnd from "../components/MiniBannerEnd";
 import ButtonEnd from "../components/ButtonEnd";
 import ChallengerLevelBarLeft from "../components/ChallengerLevelBarLeft";
 import ChallengerLevelBarRight from "../components/ChallengerLevelBarRight";
@@ -134,7 +131,6 @@ function ChallengerMode() {
   /// Adjust the position of the popup based on the message length
   useEffect(() => {
     if (popupRef.current) {
-      const popupHeight = popupRef.current.offsetHeight;
       const mascotMessageLength = mascotMessage.length;
 
       // Example condition to adjust based on message length

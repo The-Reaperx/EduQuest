@@ -5,8 +5,6 @@ import Theme3 from "../assets/images/Theme3.png";
 import Theme4 from "../assets/images/Theme4.png";
 import UploadBackDrop from "../assets/images/UploadBackDrop2.png";
 import UploadBanner from "../components/UploadBanner";
-import MCQQuestion from "../components/MCQQuestion";
-import ChatBot from "react-chatbotify";
 import Lines from "../components/Lines";
 
 interface HomeProps {
