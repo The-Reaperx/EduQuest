@@ -132,13 +132,24 @@ $text-color-tertiary: #656EB4;
 
 
 
-
-
-
-
-
-
-
-
-
-
+//Unsupported Screen
+.unsupported-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background: linear-gradient(90deg, rgba(101,85,174,1) 0%, rgba(135,115,228,1) 60%); 
+    color: #32316D; /* Text color */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  
+  .unsupported-screen p {
+    padding-top: 30px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+  }
+  
