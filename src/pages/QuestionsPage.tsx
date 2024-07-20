@@ -117,7 +117,6 @@ function QuestionsPage() {
   /// Adjust the position of the popup based on the message length
   useEffect(() => {
     if (popupRef.current) {
-      const popupHeight = popupRef.current.offsetHeight;
       const mascotMessageLength = mascotMessage.length;
 
       // Example condition to adjust based on message length

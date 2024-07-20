@@ -1,4 +1,3 @@
-import { scales } from "chart.js";
 import React from "react";
 
 interface LevelButtonProps {

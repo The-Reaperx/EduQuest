@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DoughnutChart from "./DoughnutChart";
 import ActiveStarEnd from "./ActiveStarEnd";
 import InactiveStarEnd from "./InactiveStarEnd";

@@ -1,7 +1,6 @@
 import { Modal } from "react-bootstrap";
 import TemplateDemo from "./FileDrop";
 import { Button } from "primereact/button";
-import { useState } from "react";
 
 interface ModalProps {
   isOpen: boolean;

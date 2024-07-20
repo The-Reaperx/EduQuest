@@ -42,11 +42,6 @@ export default function FileDrop() {
     });
   };
 
-  const onTemplateRemove = (file: File, callback: Function) => {
-    setTotalSize(totalSize - file.size);
-    callback();
-  };
-
   const onTemplateClear = () => {
     setTotalSize(0);
   };

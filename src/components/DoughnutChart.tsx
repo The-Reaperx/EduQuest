@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Chart } from "primereact/chart";
 
 interface DoughnutChartProps {
