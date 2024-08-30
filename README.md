@@ -1,4 +1,2 @@
-# This is a Beautiful Readme File that will make you Cry
+# This a React Project for an Educational Hackathon
 
-Start Crying :D
-I changed the readme File just to check
