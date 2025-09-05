@@ -1,8 +1,8 @@
 
-![Logo](https://i.postimg.cc/dhfxBGZr/Eduquest-Logo.png)
+![Logo](https://i.postimg.cc/Wz8fYRZs/Eduquest-Banner.png)
 
 
-# EDUQUEST AI 
+## Features
 
 - Create your own unique learning experience by uploading your  study slides
 - Generating custom levels and MCQ styled questions with 2 game modes
